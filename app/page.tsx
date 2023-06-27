@@ -1,5 +1,13 @@
+import NavigationBar from "@/layouts/NavigationBar/";
+
 const Home = () => {
-  return <main></main>;
+  return (
+    <>
+      <NavigationBar />
+      <main></main>
+      
+    </>
+  );
 };
 
 export default Home;

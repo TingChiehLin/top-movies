@@ -12,6 +12,7 @@ Top Movies App includes a list of top 100 movies
 - [Getting Started](#getting-started)
 - [Tech I used](#tech-i-used)
 - [API](#api)
+- [Design](#design)
 - [Learn More](#learn-more)
 
 ## Demo
@@ -52,6 +53,12 @@ yarn dev
 Movie RESTful API
 
 - [API Documentation](https://rapidapi.com/rapihub-rapihub-default/api/imdb-top-100-movies)
+
+## Design
+
+font choice
+
+- [Lato](https://fonts.google.com/specimen/Lato)
 
 ## Learn More
 
