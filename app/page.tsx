@@ -1,3 +1,4 @@
+import Footer from "@/layouts/Footer";
 import NavigationBar from "@/layouts/NavigationBar/";
 
 const Home = () => {
@@ -5,7 +6,7 @@ const Home = () => {
     <>
       <NavigationBar />
       <main></main>
-      
+      <Footer />
     </>
   );
 };
