@@ -1,13 +1,21 @@
-import Footer from "@/layouts/Footer";
-import NavigationBar from "@/layouts/NavigationBar/";
+import SearchBar from "@/components/SearchBar/SearchBar";
 
 const Home = () => {
+  const handleSearch = () => {
+    console.log("onChange");
+  };
   return (
-    <>
-      <NavigationBar />
-      <main></main>
-      <Footer />
-    </>
+    <div className="w-full flex justify-between items-center">
+      <h1 className="text-4xl">Top 100 Movies</h1>
+      <SearchBar
+        id={"search-movie"}
+        type={"text"}
+        name={"search-movie"}
+        value={""}
+        placeholder="type movie name"
+        onChange={handleSearch}
+      />
+    </div>
   );
 };
 

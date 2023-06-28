@@ -1,6 +1,9 @@
 import "./globals.css";
 import { Lato } from "next/font/google";
 
+import Footer from "@/layouts/Footer";
+import NavigationBar from "@/layouts/NavigationBar/";
+
 const lato = Lato({
   weight: ["100", "300", "400", "700", "900"],
   style: ["normal", "italic"],
@@ -19,7 +22,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${lato.className} tracking-wider`}>{children}</body>
+      <body className={`${lato.className} tracking-wider`}>
+        <NavigationBar />
+        <main className="w-full h-screen bg-slate-100 p-24">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }
