@@ -1,3 +1,5 @@
+"use client";
+
 import FliterBar from "@/components/FliterBar";
 import MovieSection from "@/components/MovieSection/MovieSection";
 import SearchBar from "@/components/SearchBar/SearchBar";
@@ -16,7 +18,7 @@ const Home = () => {
           name={"search-movie"}
           value={""}
           placeholder="Type movie name"
-          // onChange={handleSearch}
+          onChange={handleSearch}
         />
       </div>
       <FliterBar />

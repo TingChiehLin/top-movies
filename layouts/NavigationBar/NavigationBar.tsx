@@ -7,7 +7,7 @@ const NavigationBar = () => {
   return (
     <nav className="w-full h-24 px-32 bg-sky-950">
       <div className="h-full flex justify-between items-center">
-        <Image src={Logo} alt="logo" width={"144"} height={"36"} />
+        <Image src={Logo} alt="logo" width={"144"} />
         <ul className="flex items-center gap-6 text-white">
           <li>
             <Link href="/about">About</Link>
