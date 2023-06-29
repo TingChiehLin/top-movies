@@ -9,14 +9,20 @@ interface SearchBarTypeProp {
   name: string;
   value: string;
   placeholder: string;
-  onChange: () => void;
+  // onChange: () => void;
 }
 
 const SearchBar: FC<SearchBarTypeProp> = ({ ...props }) => {
   return (
-    <div className="w-64 h-12 py-4 pl-4 bg-blue-500 border-8">
-      <FiSearch className="text-slate-400" size={"1.5rem"} />
-      <input className="w-full p-4" {...props} />
+    <div className="w-64 py-4 pl-4 relative">
+      <FiSearch
+        className="text-slate-400 absolute left-8 top-8"
+        size={"1.6rem"}
+      />
+      <input
+        className="w-full py-4 pl-14 border-0 outline-0 rounded-lg"
+        {...props}
+      />
     </div>
   );
 };

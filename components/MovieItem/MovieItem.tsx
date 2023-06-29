@@ -1,5 +1,5 @@
 const MovieItem = () => {
-  return <div></div>;
+  return <div>MovieItem</div>;
 };
 
 export default MovieItem;
