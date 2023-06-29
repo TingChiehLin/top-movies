@@ -9,7 +9,7 @@ interface SearchBarTypeProp {
   name: string;
   value: string;
   placeholder: string;
-  onChange: () => void;
+  onChange: (e: React.FormEvent<HTMLInputElement>) => void;
 }
 
 const SearchBar: FC<SearchBarTypeProp> = ({ ...props }) => {

@@ -3,10 +3,12 @@
 import FliterBar from "@/components/FliterBar";
 import MovieSection from "@/components/MovieSection/MovieSection";
 import SearchBar from "@/components/SearchBar/SearchBar";
+import * as React from "react";
 
 const Home = () => {
-  const handleSearch = () => {
-    console.log("onChange");
+  const [searchText, setSearchText] = React.useState("");
+  const handleSearch = (e: React.FormEvent<HTMLInputElement>) => {
+    setSearchText(e.currentTarget.value);
   };
   return (
     <div>
@@ -16,7 +18,7 @@ const Home = () => {
           id={"search-movie"}
           type={"text"}
           name={"search-movie"}
-          value={""}
+          value={searchText}
           placeholder="Type movie name"
           onChange={handleSearch}
         />
