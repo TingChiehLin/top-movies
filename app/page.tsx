@@ -12,11 +12,11 @@ const Home = () => {
   };
   return (
     <div>
-      <div className="w-full flex justify-between items-center mb-6">
+      <div className="w-full flex justify-between items-center mb-4">
         <h1 className="text-4xl">Top 100 Movies</h1>
         <SearchBar
           id={"search-movie"}
-          type={"text"}
+          type={"search"}
           name={"search-movie"}
           value={searchText}
           placeholder="Type movie name"

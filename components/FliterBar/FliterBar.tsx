@@ -10,6 +10,7 @@ const FliterBar = () => {
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
+  const handleCancel = () => {};
   return (
     <div className="relative w-32">
       <div
@@ -35,6 +36,7 @@ const FliterBar = () => {
             <div
               key={filterItem.name}
               className="pl-4 py-4 cursor-pointer active:text-white active:bg-sky-700 hover:bg-slate-200"
+              onClick={handleClick}
             >
               {filterItem.name}
             </div>

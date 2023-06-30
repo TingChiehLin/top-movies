@@ -20,7 +20,7 @@ const SearchBar: FC<SearchBarTypeProp> = ({ ...props }) => {
         size={"1.6rem"}
       />
       <input
-        className="w-full py-4 pl-14 border-0 outline-0 rounded-lg"
+        className="w-full py-4 pl-14 pr-4 border-0 outline-0 rounded-lg"
         {...props}
       />
     </div>
