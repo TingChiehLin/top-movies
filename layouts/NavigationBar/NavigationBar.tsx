@@ -15,7 +15,6 @@ const NavigationBar = () => {
           <li>
             <Link href="/about">Favorites</Link>
           </li>
-          <li>Profile</li>
         </ul>
       </div>
     </nav>

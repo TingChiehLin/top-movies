@@ -56,9 +56,13 @@ Movie RESTful API
 
 ## Design
 
-font choice
+Font
 
 - [Lato](https://fonts.google.com/specimen/Lato)
+
+Color
+
+- [Sky & Slate](https://tailwindcss.com/docs/customizing-colors)
 
 ## Learn More
 
