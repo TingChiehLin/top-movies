@@ -1,7 +1,5 @@
-import { FcLike } from "react-icons/fc";
+import { redirect } from "next/navigation";
 
-const MovieDetail = () => {
-  return <div></div>;
-};
-
-export default MovieDetail;
+export default async function Home() {
+  redirect("/");
+}
