@@ -11,9 +11,9 @@ const Home = () => {
     setSearchText(e.currentTarget.value);
   };
   return (
-    <div>
-      <div className="w-full flex justify-between items-center mb-4">
-        <h1 className="text-4xl">Top 100 Movies</h1>
+    <>
+      <h1 className="text-4xl mb-6">Top 100 Movies</h1>
+      <form className="flex justify-between items-center mb-6">
         <SearchBar
           id={"search-movie"}
           type={"search"}
@@ -22,10 +22,10 @@ const Home = () => {
           placeholder="Type movie name"
           onChange={handleSearch}
         />
-      </div>
-      <FliterBar />
+        <FliterBar />
+      </form>
       <MovieSection />
-    </div>
+    </>
   );
 };
 

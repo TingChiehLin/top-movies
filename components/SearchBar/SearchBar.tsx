@@ -14,9 +14,12 @@ interface SearchBarTypeProp {
 
 const SearchBar: FC<SearchBarTypeProp> = ({ ...props }) => {
   return (
-    <div className="w-64 py-4 pl-4 relative">
+    <div className="w-64 py-4 relative">
+      <label className="sr-only" htmlFor={props.id}>
+        search
+      </label>
       <FiSearch
-        className="text-slate-400 absolute left-8 top-8"
+        className="text-slate-400 absolute left-4 top-8"
         size={"1.6rem"}
       />
       <input

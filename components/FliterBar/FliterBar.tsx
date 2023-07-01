@@ -1,50 +1,62 @@
 "use client";
 
-import React from "react";
+import * as React from "react";
 import { FiChevronUp } from "react-icons/fi";
 
 import { FILTER_ITEMS } from "../../lib/filterItems";
 
 const FliterBar = () => {
+  const [value, setValue] = React.useState(FILTER_ITEMS[0].value);
   const [isOpen, setIsOpen] = React.useState(false);
+  const ref = React.useRef();
+
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
-  const handleCancel = () => {};
+
+  const handChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setValue(e.target.value);
+  };
+  const handleClickOutside = () => {
+    setIsOpen(false);
+  };
+
   return (
-    <div className="relative w-32">
-      <div
-        className="w-full h-full flex justify-center p-2 bg-sky-700 text-white rounded-lg cursor-pointer"
+    <div className="w-56 flex items-center gap-4 bg-red-300">
+      <label htmlFor="movie-filter">Filter Genre:</label>
+      <FiChevronUp
+        size={24}
+        className={`absolute right-0 top-0 transition ease-out duration-300 ${
+          isOpen && "rotate-180"
+        }`}
+      />
+      <select
+        id="movie-select"
+        value={value}
+        className="px-3 py-2 bg-sky-700 text-white rounded-lg appearance-none cursor-pointer"
         onClick={handleClick}
+        onChange={handChange}
       >
-        <div className="flex items-center gap-1">
-          <span>FliterBar</span>
-          <FiChevronUp
-            size={24}
-            className={`transition ease-out duration-300 ${
-              isOpen && "rotate-180"
-            }`}
-          />
-        </div>
-      </div>
-      {isOpen && (
-        <div
-          id="dropDown_menu"
-          className="absolute top-12 left-0 rounded-lg w-full h-auto bg-slate-50 shadow"
-        >
-          {FILTER_ITEMS.map((filterItem) => (
-            <div
-              key={filterItem.name}
-              className="pl-4 py-4 cursor-pointer active:text-white active:bg-sky-700 hover:bg-slate-200"
-              onClick={handleClick}
-            >
-              {filterItem.name}
-            </div>
-          ))}
-        </div>
-      )}
+        {FILTER_ITEMS.map((option) => (
+          <option
+            key={option.value}
+            value={option.value}
+            className="pl-4 py-4 cursor-pointer active:text-white active:bg-sky-700 hover:bg-slate-200"
+            onClick={handleClick}
+          >
+            {option.label}
+          </option>
+        ))}
+      </select>
     </div>
   );
 };
 
 export default FliterBar;
+
+{/* <FiChevronUp
+size={24}
+className={`transition ease-out duration-300 ${
+  isOpen && "rotate-180"
+}`}
+/> */}

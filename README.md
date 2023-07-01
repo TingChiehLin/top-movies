@@ -68,4 +68,4 @@ Color
 
 To learn more about the project, take a look at the following resources:
 
-- [Next.js Documentation]() -
+- [HTML Inputs and Labels: A Love Story](https://css-tricks.com/html-inputs-and-labels-a-love-story/)
