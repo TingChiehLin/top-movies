@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${lato.className} tracking-wider`}>
         <NavigationBar />
-        <main className="w-full h-screen bg-slate-100 p-32">{children}</main>
+        <main className="w-full bg-slate-100 p-32">{children}</main>
         <Footer />
       </body>
     </html>

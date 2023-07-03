@@ -11,8 +11,8 @@ const FliterBar = () => {
 
   const handleClick = () => {};
 
-  const handChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setValue(e.target.value);
+  const handChange = (e: React.FormEvent<HTMLSelectElement>) => {
+    setValue(e.currentTarget.value);
   };
   const handleClickOutside = () => {};
 

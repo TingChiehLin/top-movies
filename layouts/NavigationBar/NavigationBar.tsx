@@ -7,7 +7,14 @@ const NavigationBar = () => {
   return (
     <nav className="w-full h-24 px-32 bg-sky-950">
       <div className="h-full flex justify-between items-center">
-        <Image src={Logo} alt="logo" width={"144"} />
+        <Link href="/">
+          <Image
+            src={Logo}
+            alt="logo"
+            width={"144"}
+            className="cursor-pointer"
+          />
+        </Link>
         <ul className="flex items-center gap-6 text-white">
           <li>
             <Link href="/about">About</Link>
