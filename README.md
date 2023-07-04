@@ -1,11 +1,12 @@
-##Top Movies
+## Top Movies App
 
-Top Movies App includes a list of top 100 movies
+Top Movies App includes a list of top 100 movies and users are able to save movie into their favorite list
 
 ![top_movies_preview](./public//top_movies_preview.png)
 
 ## Table of contents
 
+- [Top Movies App](#top-movies-app)
 - [Table of contents](#table-of-contents)
 - [Demo](#demo)
 - [Set Up API Key](#set-up-api-key)
@@ -46,6 +47,7 @@ yarn dev
 - React
 - Next.js 13
 - TailwindCSS
+- React Icon
 - Test Library(Jest and Cypress)
 
 ## API

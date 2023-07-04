@@ -20,7 +20,7 @@ const NavigationBar = () => {
             <Link href="/about">About</Link>
           </li>
           <li>
-            <Link href="/about">Favorites</Link>
+            <Link href="/favorite">Favorite</Link>
           </li>
         </ul>
       </div>
