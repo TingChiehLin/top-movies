@@ -5,8 +5,8 @@ import Link from "next/link";
 
 const NavigationBar = () => {
   return (
-    <nav className="w-full h-24 px-32 bg-sky-950">
-      <div className="h-full flex justify-between items-center">
+    <nav className="w-full h-auto px-12 md:px-16 xl:px-32 bg-sky-950">
+      <div className="h-24 flex justify-between items-center">
         <Link href="/">
           <Image
             src={Logo}

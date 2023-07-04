@@ -1,5 +1,7 @@
-import Image from "next/image";
 import { FC } from "react";
+import Image from "next/image";
+
+import { HiMiniStar } from "react-icons/hi2";
 
 interface MovieItemTypeProp {
   title?: string;
