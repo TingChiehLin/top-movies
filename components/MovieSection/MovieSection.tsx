@@ -1,16 +1,34 @@
+import { FC } from "react";
 import MovieItem from "../MovieItem";
 
-const MovieSection = () => {
+type movieField = {
+  rank: number;
+  title: string;
+  thumbnail: string;
+  rating: string;
+  id: string;
+  year: number;
+  image: string;
+  description: string;
+  trailer: string;
+  genre: string[];
+  director: string[];
+  writers: string[];
+  imdbid: string;
+};
+
+interface MovieSectionPropType {
+  movieData: movieField[];
+}
+
+const MovieSection: FC<MovieSectionPropType> = ({ movieData }) => {
   return (
-    <div className="grid grid-cols-4 gap-16">
-      <MovieItem />
-      <MovieItem />
-      <MovieItem />
-      <MovieItem />
-      <MovieItem />
-      <MovieItem />
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-16">
+      {movieData.map((movie) => {
+        return <MovieItem key={movie.imdbid} />;
+      })}
     </div>
-  ); 
+  );
 };
 
 export default MovieSection;

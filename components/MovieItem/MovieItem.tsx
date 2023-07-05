@@ -20,7 +20,7 @@ const MovieItem: FC<MovieItemTypeProp> = ({ id, title, rating }) => {
           width="0"
           height="0"
           sizes="100vw"
-          className="w-full h-auto cursor-pointer rounded-lg"
+          className="w-full cursor-pointer rounded-lg"
           alt={""}
         />
         <div className="flex item-center gap-1 mt-1.5 absolute top-0 right-2">

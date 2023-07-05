@@ -6,6 +6,8 @@ import FliterBar from "@/components/FliterBar";
 import MovieSection from "@/components/MovieSection/MovieSection";
 import SearchBar from "@/components/SearchBar/SearchBar";
 
+import movieData from "../lib/top_100_movies.json";
+
 const Home = () => {
   const [searchText, setSearchText] = React.useState("");
   const handleSearch = (e: React.FormEvent<HTMLInputElement>) => {
@@ -26,7 +28,7 @@ const Home = () => {
         />
         <FliterBar />
       </form>
-      <MovieSection />
+      <MovieSection movieData={movieData} />
     </>
   );
 };
