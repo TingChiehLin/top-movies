@@ -1,6 +1,6 @@
 ## Top Movies App
 
-Top Movies App includes a list of top 100 movies and users are able to save movie into their favorite list
+Top Movies App includes a list of top 100 movies, where you can search and save movies as favorite.
 
 ![top_movies_preview](./public//top_movies_preview.png)
 

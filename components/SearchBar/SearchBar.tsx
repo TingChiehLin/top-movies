@@ -5,6 +5,7 @@ import { FiSearch } from "react-icons/fi";
 
 interface SearchBarTypeProp {
   id: string;
+  label: string;
   type: string;
   name: string;
   value: string;
@@ -12,11 +13,11 @@ interface SearchBarTypeProp {
   onChange: (e: React.FormEvent<HTMLInputElement>) => void;
 }
 
-const SearchBar: FC<SearchBarTypeProp> = ({ ...props }) => {
+const SearchBar: FC<SearchBarTypeProp> = ({ label, ...props }) => {
   return (
     <div className="w-64 relative">
       <label className="sr-only" htmlFor={props.id}>
-        search
+        {label}
       </label>
       <FiSearch
         className="text-slate-400 absolute left-4 top-4"

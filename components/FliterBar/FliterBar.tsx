@@ -3,10 +3,10 @@
 import * as React from "react";
 import { FiChevronDown } from "react-icons/fi";
 
-import { FILTER_ITEMS } from "../../lib/filterItems";
+import { FLITERBAR_ITEMS } from "../../lib/fliterbarItems";
 
 const FliterBar = () => {
-  const [value, setValue] = React.useState(FILTER_ITEMS[0].value);
+  const [value, setValue] = React.useState(FLITERBAR_ITEMS[0].value);
   const ref = React.useRef();
 
   const handleClick = () => {};
@@ -18,9 +18,6 @@ const FliterBar = () => {
 
   return (
     <div className="relative w-32 flex items-center gap-4">
-      {/* <label className="w-52" htmlFor="movie-filter">
-        Filter Genre:
-      </label> */}
       <select
         id="movie-select"
         value={value}
@@ -28,7 +25,7 @@ const FliterBar = () => {
         onClick={handleClick}
         onChange={handChange}
       >
-        {FILTER_ITEMS.map((option) => (
+        {FLITERBAR_ITEMS.map((option) => (
           <option
             key={option.value}
             value={option.value}

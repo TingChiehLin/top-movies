@@ -20,6 +20,7 @@ const Home = () => {
       <form className="flex justify-between items-center mb-16">
         <SearchBar
           id={"search-movie"}
+          label={"search movie title"}
           type={"search"}
           name={"search-movie"}
           value={searchText}
