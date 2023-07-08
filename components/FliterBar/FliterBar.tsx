@@ -3,10 +3,17 @@
 import * as React from "react";
 import { FiChevronDown } from "react-icons/fi";
 
-import { FLITERBAR_ITEMS } from "../../lib/fliterbarItems";
+import { FLITERBAR_ITEMS, fliterType } from "../../lib/fliterbarItems";
+
+const getAllFliterGenres = (FLITERBAR_ITEMS: fliterType[]) => {
+  const fliterbarItems = Object.keys(FLITERBAR_ITEMS);
+  return fliterbarItems;
+};
 
 const FliterBar = () => {
-  const [value, setValue] = React.useState(FLITERBAR_ITEMS[0].value);
+  const genres = getAllFliterGenres(FLITERBAR_ITEMS);
+
+  const [value, setValue] = React.useState(genres[0]);
   const ref = React.useRef();
 
   const handleClick = () => {};
@@ -25,14 +32,14 @@ const FliterBar = () => {
         onClick={handleClick}
         onChange={handChange}
       >
-        {FLITERBAR_ITEMS.map((option) => (
+        {genres.map((option) => (
           <option
-            key={option.value}
-            value={option.value}
+            key={option}
+            value={option}
             className="px-4 py-4 cursor-pointer active:text-white active:bg-sky-700 hover:bg-slate-200"
             onClick={handleClick}
           >
-            {option.label}
+            {option}
           </option>
         ))}
       </select>

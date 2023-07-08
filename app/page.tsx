@@ -10,6 +10,7 @@ import movieData from "../lib/top_100_movies.json";
 
 const Home = () => {
   const [searchText, setSearchText] = React.useState("");
+
   const handleSearch = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
     setSearchText(e.currentTarget.value);

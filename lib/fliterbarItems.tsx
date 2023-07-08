@@ -1,4 +1,9 @@
-export const FLITERBAR_ITEMS = [
+export type fliterType = {
+  label: string;
+  value: string;
+};
+
+export const FLITERBAR_ITEMS: fliterType[] = [
   { label: "All", value: "all" },
   { label: "Action", value: "action" },
   { label: "Adventrue", value: "adventrue" },
