@@ -21,12 +21,7 @@ const MovieItem: FC<MovieItemTypeProp> = ({
   return (
     <div>
       <Link
-        href={{
-          pathname: "movie/[imdbid]",
-          query: {
-            title,
-          },
-        }}
+        href={`/movie/${imdbid}`}
         className="relative block transition duration-300 ease-out hover:scale-105"
       >
         <Image

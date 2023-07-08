@@ -13,6 +13,7 @@ const Home = () => {
   const handleSearch = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
     setSearchText(e.currentTarget.value);
+    console.log("searchText", e.currentTarget.value);
   };
   return (
     <>
