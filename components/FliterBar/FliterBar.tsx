@@ -3,12 +3,7 @@
 import * as React from "react";
 import { FiChevronDown } from "react-icons/fi";
 
-import { FLITERBAR_ITEMS, fliterType } from "../../lib/fliterbarItems";
-
-const getAllFliterGenres = (FLITERBAR_ITEMS: fliterType[]) => {
-  const fliterbarItems = Object.keys(FLITERBAR_ITEMS);
-  return fliterbarItems;
-};
+import { FLITERBAR_ITEMS, getAllFliterGenres } from "../../lib/fliterbarItems";
 
 const FliterBar = () => {
   const genres = getAllFliterGenres(FLITERBAR_ITEMS);

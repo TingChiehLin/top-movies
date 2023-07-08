@@ -18,3 +18,8 @@ export const FLITERBAR_ITEMS: fliterType[] = [
   { label: "thriller", value: "thriller" },
   { label: "Western", value: "western" },
 ];
+
+export const getAllFliterGenres = (FLITERBAR_ITEMS: fliterType[]) => {
+  const fliterbarItems = Object.keys(FLITERBAR_ITEMS);
+  return fliterbarItems;
+};
