@@ -3,11 +3,11 @@
 import * as React from "react";
 import { FiChevronDown } from "react-icons/fi";
 
-import { FLITERBAR_ITEMS, getAllFliterGenres } from "../../lib/fliterbarItems";
+import { getAllFliterGenres } from "../../lib/fliterbarItems";
 
 const FliterBar = () => {
-  const genres = getAllFliterGenres(FLITERBAR_ITEMS);
-
+  const genres = getAllFliterGenres();
+  console.log(genres);
   const [value, setValue] = React.useState(genres[0]);
   const ref = React.useRef();
 

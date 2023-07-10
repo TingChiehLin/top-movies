@@ -71,3 +71,9 @@ Color
 To learn more about the project, take a look at the following resources:
 
 - [HTML Inputs and Labels: A Love Story](https://css-tricks.com/html-inputs-and-labels-a-love-story/)
+
+- [Merge/Flatten Array](https://stackoverflow.com/questions/10865025/merge-flatten-an-array-of-arrays)
+
+- [Remove duplicate values from JS Array](https://stackoverflow.com/questions/9229645/remove-duplicate-values-from-js-array)
+
+- [Array.from method creates a new, shallow-copied](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from)

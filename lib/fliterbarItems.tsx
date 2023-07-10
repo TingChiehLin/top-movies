@@ -1,25 +1,8 @@
-export type fliterType = {
-  label: string;
-  value: string;
-};
+import movies from "./top_100_movies.json";
 
-export const FLITERBAR_ITEMS: fliterType[] = [
-  { label: "All", value: "all" },
-  { label: "Action", value: "action" },
-  { label: "Adventrue", value: "adventrue" },
-  { label: "Biography", value: "biography" },
-  { label: "Crime", value: "crime" },
-  { label: "Comdy", value: "comdy" },
-  { label: "Drama", value: "drama" },
-  { label: "Family", value: "family" },
-  { label: "Fantasy", value: "fantasy" },
-  { label: "History", value: "history" },
-  { label: "Romance", value: "romance" },
-  { label: "thriller", value: "thriller" },
-  { label: "Western", value: "western" },
-];
-
-export const getAllFliterGenres = (FLITERBAR_ITEMS: fliterType[]) => {
-  const fliterbarItems = Object.keys(FLITERBAR_ITEMS);
-  return fliterbarItems;
+export const getAllFliterGenres = () => {
+  const allGenres = movies.map((movie) => movie.genre);
+  const mergeArray = allGenres.flat();
+  const newArray = Array.from(new Set(mergeArray));
+  return newArray;
 };
