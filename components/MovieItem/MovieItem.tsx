@@ -22,7 +22,7 @@ const MovieItem: FC<MovieItemTypeProp> = ({
     <div>
       <Link
         href={`/movie/${imdbid}`}
-        className="relative block transition duration-300 ease-out hover:scale-105"
+        className="relative block transition duration-300 ease-out hover:scale-105 max-w-sm"
       >
         <Image
           src={imgURL}
