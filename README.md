@@ -71,3 +71,4 @@ Color
 To learn more about the project, take a look at the following resources:
 
 - [HTML Inputs and Labels: A Love Story](https://css-tricks.com/html-inputs-and-labels-a-love-story/)
+- [Next13 Dynamic Routing](https://stackoverflow.com/questions/75783445/dynamic-routing-in-next-js-13-app-directory-throwing-404-not-found-error)
