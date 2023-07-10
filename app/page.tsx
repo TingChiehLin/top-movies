@@ -10,11 +10,20 @@ import movieData from "../lib/top_100_movies.json";
 
 const Home = () => {
   const [searchText, setSearchText] = React.useState("");
+  const [filteredMovieData, setFilteredMovieData] = React.useState(movieData);
+
   const handleSearch = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
-    setSearchText(e.currentTarget.value);
-    console.log("searchText", e.currentTarget.value);
+    const newSearchText = e.currentTarget.value;
+    setSearchText(newSearchText);
+    console.log("Search Text:", newSearchText);
+    const newFilteredMovieData = movieData.filter((movie) =>
+      movie.title.includes(newSearchText.toLocaleLowerCase())
+    );
+    setFilteredMovieData(newFilteredMovieData);
+    console.log("filteredMovieData", filteredMovieData);
   };
+
   return (
     <>
       <h1 className="text-4xl mb-12">Top 100 Movies</h1>
@@ -29,7 +38,7 @@ const Home = () => {
         />
         <FliterBar />
       </form>
-      <MovieSection movieData={movieData} />
+      <MovieSection movieData={filteredMovieData} />
     </>
   );
 };
