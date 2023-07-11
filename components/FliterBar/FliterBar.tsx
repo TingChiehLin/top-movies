@@ -18,9 +18,6 @@ const FliterBar = () => {
 
   return (
     <div className="relative w-32 flex items-center gap-4">
-      {/* <label className="w-52" htmlFor="movie-filter">
-        Filter Genre:
-      </label> */}
       <select
         id="movie-select"
         value={value}
