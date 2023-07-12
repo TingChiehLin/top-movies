@@ -1,7 +1,14 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Lato } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+import Footer from "@/layouts/Footer";
+import NavigationBar from "@/layouts/NavigationBar/";
+
+const lato = Lato({
+  weight: ["100", "300", "400", "700", "900"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+});
 
 export const metadata = {
   title: "Top Movies",
@@ -15,7 +22,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body
+        className={`${lato.className} tracking-wider h-screen flex flex-col`}
+      >
+        <NavigationBar />
+        <main className="bg-slate-100 p-32 flex-1">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }

@@ -1,17 +1,19 @@
-##Top Movies
+## Top Movies App
 
-Top Movies App includes a list of top 100 movies
+Top Movies App includes a list of top 100 movies, where you can search and save movies as favorite.
 
 ![top_movies_preview](./public//top_movies_preview.png)
 
 ## Table of contents
 
+- [Top Movies App](#top-movies-app)
 - [Table of contents](#table-of-contents)
 - [Demo](#demo)
 - [Set Up API Key](#set-up-api-key)
 - [Getting Started](#getting-started)
 - [Tech I used](#tech-i-used)
 - [API](#api)
+- [Design](#design)
 - [Learn More](#learn-more)
 
 ## Demo
@@ -45,6 +47,7 @@ yarn dev
 - React
 - Next.js 13
 - TailwindCSS
+- React Icon
 - Test Library(Jest and Cypress)
 
 ## API
@@ -53,8 +56,24 @@ Movie RESTful API
 
 - [API Documentation](https://rapidapi.com/rapihub-rapihub-default/api/imdb-top-100-movies)
 
+## Design
+
+Font
+
+- [Lato](https://fonts.google.com/specimen/Lato)
+
+Color
+
+- [Sky & Slate](https://tailwindcss.com/docs/customizing-colors)
+
 ## Learn More
 
 To learn more about the project, take a look at the following resources:
 
-- [Next.js Documentation]() -
+- [HTML Inputs and Labels: A Love Story](https://css-tricks.com/html-inputs-and-labels-a-love-story/)
+
+- [Merge/Flatten Array](https://stackoverflow.com/questions/10865025/merge-flatten-an-array-of-arrays)
+
+- [Remove duplicate values from JS Array](https://stackoverflow.com/questions/9229645/remove-duplicate-values-from-js-array)
+
+- [Array.from method creates a new, shallow-copied](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from)
