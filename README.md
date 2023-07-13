@@ -1,6 +1,6 @@
 ## Top Movies App
 
-Top Movies App includes a list of top 100 movies and users are able to save movie into their favorite list
+Top Movies App includes a list of top 100 movies, where you can search and save movies as favorite.
 
 ![top_movies_preview](./public//top_movies_preview.png)
 
@@ -71,4 +71,11 @@ Color
 To learn more about the project, take a look at the following resources:
 
 - [HTML Inputs and Labels: A Love Story](https://css-tricks.com/html-inputs-and-labels-a-love-story/)
+
 - [Next13 Dynamic Routing](https://stackoverflow.com/questions/75783445/dynamic-routing-in-next-js-13-app-directory-throwing-404-not-found-error)
+
+- [Merge/Flatten Array](https://stackoverflow.com/questions/10865025/merge-flatten-an-array-of-arrays)
+
+- [Remove duplicate values from JS Array](https://stackoverflow.com/questions/9229645/remove-duplicate-values-from-js-array)
+
+- [Array.from method creates a new, shallow-copied](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from)
