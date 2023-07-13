@@ -26,7 +26,6 @@ const Home = () => {
     const newFilteredMovieData = movieData.filter((movie) => {
       return movie.genre.includes(filterGenre);
     });
-    console.log(newFilteredMovieData);
     setFilteredMovieData(newFilteredMovieData);
   };
 

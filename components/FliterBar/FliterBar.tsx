@@ -25,19 +25,19 @@ const FliterBar: React.FC<FliterTypeProp> = ({ id, label, updateFilter }) => {
   const handleClickOutside = () => {};
 
   return (
-    <div className="relative w-full max-w-36 flex items-center gap-4">
+    <div className="relative w-full flex items-center gap-4">
       <label htmlFor={id}>{label}</label>
       <select
         id={id}
         value={value}
-        className="w-full px-4 py-2 outline-0 bg-sky-700 text-white rounded-lg cursor-pointer appearance-none"
+        className="pl-4 pr-8 py-2 outline-0 bg-sky-700 text-white rounded-lg cursor-pointer appearance-none"
         onChange={handChange}
       >
         {genres.map((option) => (
           <option
             key={option}
             value={option}
-            className="px-4 py-4 cursor-pointer active:text-white active:bg-sky-700 hover:bg-slate-200"
+            className="pl-6 py-4 cursor-pointer active:text-white active:bg-sky-700 hover:bg-slate-200"
           >
             {option}
           </option>
