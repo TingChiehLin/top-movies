@@ -5,26 +5,32 @@ import { FiChevronDown } from "react-icons/fi";
 
 import { getAllFliterGenres } from "../../lib/fliterbarItems";
 
-const FliterBar = () => {
+interface FliterTypeProp {
+  id: string;
+  label: string;
+  updateFilter: (filterText: string) => void;
+}
+
+const FliterBar: React.FC<FliterTypeProp> = ({ id, label, updateFilter }) => {
   const genres = getAllFliterGenres();
-  console.log(genres);
   const [value, setValue] = React.useState(genres[0]);
   const ref = React.useRef();
 
-  const handleClick = () => {};
-
   const handChange = (e: React.FormEvent<HTMLSelectElement>) => {
-    setValue(e.currentTarget.value);
+    const newSearchText = e.currentTarget.value;
+    setValue(newSearchText);
+    updateFilter(newSearchText);
   };
+
   const handleClickOutside = () => {};
 
   return (
-    <div className="relative w-32 flex items-center gap-4">
+    <div className="relative w-full max-w-36 flex items-center gap-4">
+      <label htmlFor={id}>{label}</label>
       <select
-        id="movie-select"
+        id={id}
         value={value}
         className="w-full px-4 py-2 outline-0 bg-sky-700 text-white rounded-lg cursor-pointer appearance-none"
-        onClick={handleClick}
         onChange={handChange}
       >
         {genres.map((option) => (
@@ -32,7 +38,6 @@ const FliterBar = () => {
             key={option}
             value={option}
             className="px-4 py-4 cursor-pointer active:text-white active:bg-sky-700 hover:bg-slate-200"
-            onClick={handleClick}
           >
             {option}
           </option>

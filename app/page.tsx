@@ -16,13 +16,21 @@ const Home = () => {
     e.preventDefault();
     const newSearchText = e.currentTarget.value;
     setSearchText(newSearchText);
-    console.log("Search Text:", newSearchText);
     const newFilteredMovieData = movieData.filter((movie) =>
       movie.title.includes(newSearchText.toLocaleLowerCase())
     );
     setFilteredMovieData(newFilteredMovieData);
-    console.log("filteredMovieData", filteredMovieData);
   };
+
+  const handleUpdateFilter = (filterGenre: string) => {
+    const newFilteredMovieData = movieData.filter((movie) => {
+      return movie.genre.includes(filterGenre);
+    });
+    console.log(newFilteredMovieData);
+    setFilteredMovieData(newFilteredMovieData);
+  };
+
+  const handleYearFilter = (filterYear: string) => {};
 
   return (
     <>
@@ -37,7 +45,18 @@ const Home = () => {
           placeholder="Type movie name"
           onChange={handleSearch}
         />
-        <FliterBar />
+        <div className="flex justify-center gap-4">
+          <FliterBar
+            id={"filter-genre"}
+            label={"Genre:"}
+            updateFilter={handleUpdateFilter}
+          />
+          {/* <FliterBar
+            id={"filter-year"}
+            label={"Year:"}
+            updateFilter={handleUpdateFilter}
+          /> */}
+        </div>
       </form>
       <MovieSection movieData={filteredMovieData} />
     </>
