@@ -1,6 +1,7 @@
 "use client";
 
-import { FC } from "react";
+import * as React from "react";
+import { movieDataContext } from "@/context/movieData.context";
 import { FcLike } from "react-icons/fc";
 
 interface PropType {
@@ -9,8 +10,9 @@ interface PropType {
   };
 }
 
-const MovieDetail: FC<PropType> = ({ params }) => {
-  console.log(params.imdbid);
+const MovieDetail: React.FC<PropType> = ({ params }) => {
+  const movieData = React.useContext(movieDataContext);
+  console.log("movieData:", movieData);
   return <div>MovieDetail</div>;
 };
 

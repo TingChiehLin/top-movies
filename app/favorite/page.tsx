@@ -1,6 +1,7 @@
+import { NextPage } from "next";
 import { FcLike } from "react-icons/fc";
 
-const FavouritePage = () => {
+const FavouritePage: NextPage = () => {
   return <div>FavouritePage</div>;
 };
 

@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { MovieContextProvider } from "@/context/movieData.context";
 
 import FliterBar from "@/components/FliterBar";
 import MovieSection from "@/components/MovieSection/MovieSection";
@@ -29,35 +30,35 @@ const Home = () => {
     setFilteredMovieData(newFilteredMovieData);
   };
 
-  const handleYearFilter = (filterYear: string) => {};
-
   return (
     <>
-      <h1 className="text-4xl mb-12">Top 100 Movies</h1>
-      <form className="flex justify-between items-center mb-16">
-        <SearchBar
-          id={"search-movie"}
-          label={"search movie title"}
-          type={"search"}
-          name={"search-movie"}
-          value={searchText}
-          placeholder="Type movie name"
-          onChange={handleSearch}
-        />
-        <div className="flex justify-center gap-4">
-          <FliterBar
-            id={"filter-genre"}
-            label={"Genre:"}
-            updateFilter={handleUpdateFilter}
+      <MovieContextProvider>
+        <h1 className="text-4xl mb-12">Top 100 Movies</h1>
+        <form className="flex justify-between items-center mb-16">
+          <SearchBar
+            id={"search-movie"}
+            label={"search movie title"}
+            type={"search"}
+            name={"search-movie"}
+            value={searchText}
+            placeholder="Type movie name"
+            onChange={handleSearch}
           />
-          {/* <FliterBar
+          <div className="flex justify-center gap-4">
+            <FliterBar
+              id={"filter-genre"}
+              label={"Genre:"}
+              updateFilter={handleUpdateFilter}
+            />
+            {/* <FliterBar
             id={"filter-year"}
             label={"Year:"}
             updateFilter={handleUpdateFilter}
           /> */}
-        </div>
-      </form>
-      <MovieSection movieData={filteredMovieData} />
+          </div>
+        </form>
+        <MovieSection movieData={filteredMovieData} />
+      </MovieContextProvider>
     </>
   );
 };
