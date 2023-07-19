@@ -1,7 +1,7 @@
 import { FC } from "react";
 import MovieItem from "../MovieItem";
 
-import { movieField } from "@/lib/movieField";
+import { movieField } from "@/lib/MovieField";
 
 interface MovieSectionPropType {
   movieData: movieField[];

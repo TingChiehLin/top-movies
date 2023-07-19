@@ -1,4 +1,4 @@
-export type movieField = {
+export type MovieField = {
   rank: number;
   title: string;
   thumbnail: string;

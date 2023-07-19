@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { movieField } from "@/lib/movieField";
+import { movieField } from "@/lib/MovieField";
 import { FcLike } from "react-icons/fc";
 
 import movieData from "../../../lib/top_100_movies.json";

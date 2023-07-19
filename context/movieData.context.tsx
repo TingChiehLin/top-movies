@@ -1,15 +1,24 @@
 import * as React from "react";
 
-export const MoviesContext = React.createContext({} as any);
-
-//1.favourite movies array
-//2.addFavouritedMovie
-//3.removeFavouritedMovie
+import { MovieField } from "@/lib/MovieField";
+import { FavMovieField } from "@/lib/FavMovieField";
 
 interface TypeProps {
   children: React.ReactNode;
 }
 
+const initialFavData: FavMovieField = {
+  favMovArray: [],
+  addFavMovie: () => {},
+  removeFavMovie: () => {},
+};
+
+export const MoviesContext = React.createContext(initialFavData);
+
 export const MovieContextProvider: React.FC<TypeProps> = ({ children }) => {
-  return <MoviesContext.Provider value={{}}>{children}</MoviesContext.Provider>;
+  return (
+    <MoviesContext.Provider value={initialFavData}>
+      {children}
+    </MoviesContext.Provider>
+  );
 };
