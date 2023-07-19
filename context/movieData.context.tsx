@@ -1,19 +1,15 @@
 import * as React from "react";
 
-import movieData from "../lib/top_100_movies.json";
+export const MoviesContext = React.createContext({} as any);
 
-import { movieField } from "@/lib/movieField";
-
-export const movieDataContext = React.createContext(movieData as movieField[]);
+//1.favourite movies array
+//2.addFavouritedMovie
+//3.removeFavouritedMovie
 
 interface TypeProps {
   children: React.ReactNode;
 }
 
 export const MovieContextProvider: React.FC<TypeProps> = ({ children }) => {
-  return (
-    <movieDataContext.Provider value={movieData}>
-      {children}
-    </movieDataContext.Provider>
-  );
+  return <MoviesContext.Provider value={{}}>{children}</MoviesContext.Provider>;
 };
