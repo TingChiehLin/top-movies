@@ -17,7 +17,7 @@ const MovieDetail: React.FC<PropType> = ({ params }) => {
   const [fliteredMovie, setFliteredMovie] = React.useState(null);
   const [isFavourited, setIsFavourited] = React.useState(false);
   const {addFavMovie, removeFavMovie} = React.useContext(MoviesContext);
-  const newMovie = movieData.find((movie) => movie.imdbid === params.imdbid);
+  const movie = movieData.find((movie) => movie.imdbid === params.imdbid);
   const {
     title,
     rating,
@@ -29,13 +29,13 @@ const MovieDetail: React.FC<PropType> = ({ params }) => {
     genre,
     director,
     writers,
-  } = newMovie as MovieField;
-  const handleAddFav = (newMovie: MovieField) => {
-    addFavMovie();
+  } = movie as MovieField;
+  const handleAddFav = (_movie: MovieField) => {
+    addFavMovie(_movie);
     setIsFavourited(true)
   }
-  const handleRemoveFav = (newMovie: MovieField) => {
-    removeFavMovie();
+  const handleRemoveFav = (_movie: MovieField) => {
+    removeFavMovie(_movie);
     setIsFavourited(false)
   }
   return( 
@@ -43,7 +43,7 @@ const MovieDetail: React.FC<PropType> = ({ params }) => {
       <h1 className="text-4xl">{title}</h1>
       <div className="flex items-center gap-2">
       <span className="text-sm">SAVED TO WISHLIST</span>
-      {isFavourited ?  <HiMiniHeart className="cursor-pointer" size={'2rem'} onClick={handleAddFav} color="red"/> : <HiOutlineHeart className="cursor-pointer" size={'2rem'} onClick={handleRemoveFav}/>}
+      {isFavourited ?  <HiMiniHeart className="cursor-pointer" size={'2rem'} onClick={handleAddFav(movie)} color="red"/> : <HiOutlineHeart className="cursor-pointer" size={'2rem'} onClick={handleRemoveFav}/>}
       </div>
     </div>);
 };
