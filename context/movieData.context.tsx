@@ -9,8 +9,12 @@ interface TypeProps {
 
 const initialFavData: FavMovieField = {
   favMovArray: [],
-  addFavMovie: () => {},
-  removeFavMovie: () => {},
+  addFavMovie: (movie:MovieField) => {
+
+  },
+  removeFavMovie: (movie:MovieField) => {
+
+  },
 };
 
 export const MoviesContext = React.createContext(initialFavData);
