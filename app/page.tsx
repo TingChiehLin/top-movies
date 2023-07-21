@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { MovieContextProvider } from "@/context/movieData.context";
 
 import FliterBar from "@/components/FliterBar";
 import MovieSection from "@/components/MovieSection/MovieSection";
@@ -32,7 +31,6 @@ const Home = () => {
 
   return (
     <>
-      <MovieContextProvider>
         <h1 className="text-4xl mb-12">Top 100 Movies</h1>
         <form className="flex justify-between items-center mb-16">
           <SearchBar
@@ -58,7 +56,6 @@ const Home = () => {
           </div>
         </form>
         <MovieSection movieData={filteredMovieData} />
-      </MovieContextProvider>
     </>
   );
 };

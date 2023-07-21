@@ -2,6 +2,6 @@ import { MovieField } from "./MovieField";
 
 export type FavMovieField = {
   favMovies: MovieField[];
-  addFavMovie: (movie: MovieField) => void;
-  removeFavMovie: (movie: MovieField) => void;
+  addFavMovie: (_movie: MovieField) => void;
+  removeFavMovie: (_imdbid: string) => void;
 };

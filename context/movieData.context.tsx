@@ -9,8 +9,8 @@ interface TypeProps {
 
 const initialFavMovie:FavMovieField = {
   favMovies:[],
-  addFavMovie:(movie: MovieField) => {},
-  removeFavMovie:(movie: MovieField) => {},
+  addFavMovie:(_movie: MovieField) => {},
+  removeFavMovie:(_imdbid: string) => {},
 }
 
 export const MoviesContext = React.createContext(initialFavMovie);
@@ -18,13 +18,15 @@ export const MoviesContext = React.createContext(initialFavMovie);
 export const MovieContextProvider: React.FC<TypeProps> = ({ children }) => {
   const [favMovies, setFavMovies] = React.useState<MovieField[]>([]);
 
-  const handleAddFavMovie = (movie:MovieField) => {
-    setFavMovies([...favMovies, movie])
+  const handleAddFavMovie = (_movie:MovieField) => {
+    setFavMovies(prevMovies => [...prevMovies, _movie]);
   }
 
-  const handleRemoveFavMovie = (movie:MovieField) => {
-    //setFavMovies()
+  const handleRemoveFavMovie = (_imdbid:string) => {
+     setFavMovies(prevMovie => prevMovie.filter(movie => movie.imdbid !== _imdbid))
   }
+  
+  console.log('context favMovies',favMovies);
 
   return (
     <MoviesContext.Provider value={{favMovies,addFavMovie:handleAddFavMovie,removeFavMovie: handleRemoveFavMovie}}>

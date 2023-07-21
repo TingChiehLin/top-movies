@@ -8,7 +8,6 @@ import { FavMovieField } from "@/lib/FavMovieField";
 const FavouritePage: NextPage = () => {
   const { favMovies }: FavMovieField =
     React.useContext(MoviesContext);
-    console.log('favMovArray:',favMovies);
   return <div></div>;
 };
 
