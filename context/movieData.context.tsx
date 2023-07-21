@@ -7,21 +7,27 @@ interface TypeProps {
   children: React.ReactNode;
 }
 
-const initialFavData: FavMovieField = {
-  favMovArray: [],
-  addFavMovie: (movie:MovieField) => {
+const initialFavMovie:FavMovieField = {
+  favMovies:[],
+  addFavMovie:(movie: MovieField) => {},
+  removeFavMovie:(movie: MovieField) => {},
+}
 
-  },
-  removeFavMovie: (movie:MovieField) => {
-
-  },
-};
-
-export const MoviesContext = React.createContext(initialFavData);
+export const MoviesContext = React.createContext(initialFavMovie);
 
 export const MovieContextProvider: React.FC<TypeProps> = ({ children }) => {
+  const [favMovies, setFavMovies] = React.useState<MovieField[]>([]);
+
+  const handleAddFavMovie = (movie:MovieField) => {
+    setFavMovies([...favMovies, movie])
+  }
+
+  const handleRemoveFavMovie = (movie:MovieField) => {
+    //setFavMovies()
+  }
+
   return (
-    <MoviesContext.Provider value={initialFavData}>
+    <MoviesContext.Provider value={{favMovies,addFavMovie:handleAddFavMovie,removeFavMovie: handleRemoveFavMovie}}>
       {children}
     </MoviesContext.Provider>
   );
