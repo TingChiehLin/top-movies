@@ -2,11 +2,11 @@
 
 import * as React from "react";
 
-import FliterBar from "@/components/FliterBar";
 import MovieSection from "@/components/MovieSection/MovieSection";
 import SearchBar from "@/components/SearchBar/SearchBar";
 
 import movieData from "../lib/top_100_movies.json";
+import FilterBar from "@/components/FilterBar";
 
 const Home = () => {
   const [searchText, setSearchText] = React.useState("");
@@ -16,8 +16,10 @@ const Home = () => {
     e.preventDefault();
     const newSearchText = e.currentTarget.value;
     setSearchText(newSearchText);
-    const newFilteredMovieData = movieData.filter((movie) =>
-      movie.title.includes(newSearchText.toLocaleLowerCase())
+    const newFilteredMovieData = movieData.filter((movie) => {
+    const newMovTitle = movie.title.toLowerCase().trim();
+      return newMovTitle.includes(newSearchText.toLowerCase())
+    }
     );
     setFilteredMovieData(newFilteredMovieData);
   };
@@ -43,16 +45,10 @@ const Home = () => {
             onChange={handleSearch}
           />
           <div className="flex justify-center gap-4">
-            <FliterBar
+            <FilterBar
               id={"filter-genre"}
-              label={"Genre:"}
               updateFilter={handleUpdateFilter}
             />
-            {/* <FliterBar
-            id={"filter-year"}
-            label={"Year:"}
-            updateFilter={handleUpdateFilter}
-          /> */}
           </div>
         </form>
         <MovieSection movieData={filteredMovieData} />

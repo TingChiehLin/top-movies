@@ -3,16 +3,15 @@
 import * as React from "react";
 import { FiChevronDown } from "react-icons/fi";
 
-import { getAllFliterGenres } from "../../lib/fliterbarItems";
+import { getAllFilterGenres } from "../../lib/filterbarItems";
 
-interface FliterTypeProp {
+interface FilterTypeProp {
   id: string;
-  label: string;
   updateFilter: (filterText: string) => void;
 }
 
-const FliterBar: React.FC<FliterTypeProp> = ({ id, label, updateFilter }) => {
-  const genres = getAllFliterGenres();
+const FilterBar: React.FC<FilterTypeProp> = ({ id, updateFilter }) => {
+  const genres = getAllFilterGenres();
   const [value, setValue] = React.useState(genres[0]);
   const ref = React.useRef();
 
@@ -26,7 +25,7 @@ const FliterBar: React.FC<FliterTypeProp> = ({ id, label, updateFilter }) => {
 
   return (
     <div className="relative w-full flex items-center gap-4">
-      <label htmlFor={id}>{label}</label>
+      <label className="text-xl" htmlFor={id}>Genre:</label>
       <select
         id={id}
         value={value}
@@ -52,4 +51,4 @@ const FliterBar: React.FC<FliterTypeProp> = ({ id, label, updateFilter }) => {
   );
 };
 
-export default FliterBar;
+export default FilterBar;

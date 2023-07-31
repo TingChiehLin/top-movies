@@ -30,10 +30,9 @@ const MovieItem: FC<MovieItemTypeProp> = ({
           height="0"
           sizes="100vw"
           className="w-full cursor-pointer rounded-lg"
-          alt={imdbid}
+          alt={title}
         />
         <div className="absolute inset-0 bg-black opacity-30 rounded-lg"></div>
-        {/* <div className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-black bg-fixed opacity-0 transition duration-300 ease-out hover:opacity-30"></div> */}
         <div className="flex item-center gap-1 mt-1.5 absolute top-1 right-2">
           <HiMiniStar size={"1.5rem"} className="text-yellow-400" />
           <span className="text-white">{rating}</span>

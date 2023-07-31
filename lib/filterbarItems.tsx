@@ -1,8 +1,9 @@
 import movies from "./top_100_movies.json";
 
-export const getAllFliterGenres = () => {
+export const getAllFilterGenres = () => {
   const allGenres = movies.map((movie) => movie.genre);
   const mergeArray = allGenres.flat();
-  const newArray = Array.from(new Set(mergeArray));
+  const genreArray = Array.from(new Set(mergeArray));
+  const newArray = ['Any',...genreArray];
   return newArray;
 };

@@ -1,11 +1,16 @@
 import * as React from "react";
 
 import { MovieField } from "@/lib/MovieField";
-import { FavMovieField } from "@/lib/FavMovieField";
 
 interface TypeProps {
   children: React.ReactNode;
 }
+
+export type FavMovieField = {
+  favMovies: MovieField[];
+  addFavMovie: (_movie: MovieField) => void;
+  removeFavMovie: (_imdbid: string) => void;
+};
 
 const initialFavMovie:FavMovieField = {
   favMovies:[],

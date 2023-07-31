@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import {redirect} from 'next/navigation';
 import { MovieField } from "@/lib/MovieField";
 import {HiMiniHeart,HiOutlineHeart,HiMiniStar,HiOutlineStar } from "react-icons/hi2";
 import { MoviesContext } from "@/context/movieData.context";
@@ -16,6 +17,7 @@ const MovieDetail: React.FC<PropType> = ({ params }) => {
   const [isFavourited, setIsFavourited] = React.useState(false);
   const {addFavMovie, removeFavMovie} = React.useContext(MoviesContext);
   const movie = movieData.find((movie) => movie.imdbid === params.imdbid);
+  if(movie === undefined) redirect("/");
   const {
     title,
     rating,
@@ -42,7 +44,7 @@ const MovieDetail: React.FC<PropType> = ({ params }) => {
     <div>
       <h1 className="text-4xl">{title}</h1>
       <div className="flex items-center gap-2">
-      <span className="text-sm">SAVED TO WISHLIST</span>
+      <span className="text-sm uppercase">saved to wishlist</span>
       {isFavourited ?  <HiMiniHeart className="cursor-pointer" size={'2.2rem'} onClick={() => handleRemoveFav(imdbid)} color="red"/> : <HiOutlineHeart className="cursor-pointer" size={'2.2rem'} onClick={() => handleAddFav(movie as MovieField)}/>}
       </div>
     </div>);
