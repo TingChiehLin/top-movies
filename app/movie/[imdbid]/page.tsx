@@ -3,7 +3,7 @@
 import * as React from "react";
 import {redirect} from 'next/navigation';
 import { MovieField } from "@/lib/MovieField";
-import {HiMiniHeart,HiOutlineHeart,HiMiniStar,HiOutlineStar } from "react-icons/hi2";
+import {HiMiniHeart,HiOutlineHeart } from "react-icons/hi2";
 import { MoviesContext } from "@/context/movieData.context";
 import movieData from "../../../lib/top_100_movies.json";
 
@@ -15,7 +15,7 @@ interface PropType {
 
 const MovieDetail: React.FC<PropType> = ({ params }) => {
   const [isFavourited, setIsFavourited] = React.useState(false);
-  const {addFavMovie, removeFavMovie} = React.useContext(MoviesContext);
+  const {favMovies, addFavMovie, removeFavMovie} = React.useContext(MoviesContext);
   const movie = movieData.find((movie) => movie.imdbid === params.imdbid);
   if(movie === undefined) redirect("/");
   const {
@@ -31,6 +31,15 @@ const MovieDetail: React.FC<PropType> = ({ params }) => {
     writers,
     imdbid
   } = movie as MovieField;
+
+  React.useEffect(() => {
+    const favMovie = favMovies.find((favMovie) => favMovie.imdbid === params.imdbid)
+    if(favMovie) {
+      setIsFavourited(true)
+    } else {
+      setIsFavourited(false)
+    }
+  }, [favMovies, params.imdbid])
 
   const handleAddFav = (_movie: MovieField) => {
     addFavMovie(_movie);

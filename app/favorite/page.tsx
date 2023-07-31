@@ -3,12 +3,18 @@
 import { NextPage } from "next";
 import * as React from 'react';
 import { MoviesContext } from "@/context/movieData.context";
-import { FavMovieField } from "@/lib/FavMovieField";
 
 const FavouritePage: NextPage = () => {
-  const { favMovies }: FavMovieField =
+  const { favMovies } =
     React.useContext(MoviesContext);
-  return <div></div>;
+    console.log('favMovies:',favMovies)
+  return <div>
+    {
+      favMovies.map((movie) => {
+        return <div key={movie.imdbid} className="text-2xl">{movie.title}</div>
+      })
+    }
+  </div>;
 };
 
 export default FavouritePage;
