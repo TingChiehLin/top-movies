@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Lato } from "next/font/google";
 
+import HomeContainer from "@/layouts/HomeContainer/HomeContainer";
 import Footer from "@/layouts/Footer";
 import NavigationBar from "@/layouts/NavigationBar/";
 
@@ -25,9 +26,11 @@ export default function RootLayout({
       <body
         className={`${lato.className} tracking-wider h-screen flex flex-col`}
       >
-        <NavigationBar />
-        <main className="bg-slate-100 p-32 flex-1">{children}</main>
-        <Footer />
+        <HomeContainer>
+          <NavigationBar />
+          <main className="bg-slate-100 p-32 flex-1">{children}</main>
+          <Footer />
+        </HomeContainer>
       </body>
     </html>
   );

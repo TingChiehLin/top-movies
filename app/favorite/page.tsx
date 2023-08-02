@@ -1,7 +1,20 @@
-import { FcLike } from "react-icons/fc";
+"use client"
 
-const FavouritePage = () => {
-  return <div>FavouritePage</div>;
+import { NextPage } from "next";
+import * as React from 'react';
+import { MoviesContext } from "@/context/movieData.context";
+
+const FavouritePage: NextPage = () => {
+  const { favMovies } =
+    React.useContext(MoviesContext);
+    console.log('favMovies:',favMovies)
+  return <div>
+    {
+      favMovies.map((movie) => {
+        return <div key={movie.imdbid} className="text-2xl">{movie.title}</div>
+      })
+    }
+  </div>;
 };
 
 export default FavouritePage;
