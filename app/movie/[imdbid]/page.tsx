@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import {redirect} from 'next/navigation';
-import { MovieField } from "@/lib/MovieField";
+import { MovieField } from "@/lib/movieField";
 import {HiMiniHeart,HiOutlineHeart } from "react-icons/hi2";
 import { MoviesContext } from "@/context/movieData.context";
 import movieData from "../../../lib/top_100_movies.json";
