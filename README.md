@@ -25,10 +25,10 @@ You can see my project on Vercel [Demo Link]()
 First of all, set up API Key
 
 ``
-
 1. Create `.env.local` file on the root path
 2. Inside the file, declare a variable with API Key, like this: `NEXT_PUBLIC_MOVIE_API_KEY=<your-api-key>`
-   ``
+   or use `top_100_movies.json file`
+``
 
 ## Getting Started
 
@@ -48,6 +48,7 @@ yarn dev
 - Next.js 13
 - TailwindCSS
 - React Icon
+- React Context API
 - Test Library(Jest and Cypress)
 
 ## API
