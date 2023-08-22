@@ -28,7 +28,7 @@ export default function RootLayout({
       >
         <HomeContainer>
           <NavigationBar />
-          <main className="bg-slate-100 p-32 flex-1">{children}</main>
+          <main className="w-full h-auto flex-1 bg-slate-100">{children}</main>
           <Footer />
         </HomeContainer>
       </body>
