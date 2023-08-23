@@ -14,6 +14,8 @@ const AboutPage = () => {
         <h1 className='text-4xl'>DISCOVERY TOP MOVIE 100</h1>
         <p className='mt-12 leading-loose'>Hello there 👋</p>
         <p className='leading-loose'>My name is Jay Lin, I make movie app is aimed for people who love to watch movies with top 100，They also are able to add movies into favourite list</p>
+        <br/>
+        <p className='leading-loose'>First of all, I sketch my general ideas and look for inspiration. Then, I make a muck up with some of colors. Finanlly, I transfer my design into coding with <strong>Next.js | React | TypeScript | TailwildCSS | HTML5</strong></p>
       </div>
       <div className='w-40'>
         <SocialGroup title={"Contact Me"}>
