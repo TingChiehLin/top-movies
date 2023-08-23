@@ -15,7 +15,7 @@ interface SearchBarTypeProp {
 
 const SearchBar: FC<SearchBarTypeProp> = ({ label, ...props }) => {
   return (
-    <div className="w-64 relative">
+    <div className="w-72 relative">
       <label className="sr-only" htmlFor={props.id}>
         {label}
       </label>
@@ -24,7 +24,7 @@ const SearchBar: FC<SearchBarTypeProp> = ({ label, ...props }) => {
         size={"1.6rem"}
       />
       <input
-        className="w-full py-4 pl-14 pr-4 border-0 outline-0 rounded-lg"
+        className="w-full py-3 pl-14 pr-4 border-0 outline-0 rounded-lg"
         {...props}
       />
     </div>

@@ -22,7 +22,7 @@ const MovieItem: FC<MovieItemTypeProp> = ({
     <div>
       <Link
         href={`/movie/${imdbid}`}
-        className="relative block transition duration-300 ease-out hover:scale-105 max-w-sm"
+        className="relative block transition duration-300 ease-out hover:scale-105 max-w-sm md:max-w-xs"
       >
         <Image
           src={imgURL}
@@ -33,12 +33,12 @@ const MovieItem: FC<MovieItemTypeProp> = ({
           alt={title}
         />
         <div className="absolute inset-0 bg-black opacity-30 rounded-lg"></div>
-        <div className="flex item-center gap-1 mt-1.5 absolute top-1 right-2">
+        <div className="flex item-center gap-1.5 absolute top-2 right-2">
           <HiMiniStar size={"1.5rem"} className="text-yellow-400" />
-          <span className="text-white">{rating}</span>
+          <span className="text-white -mt-1">{rating}</span>
         </div>
       </Link>
-      <span className="font-bold mt-4 block text-2xl">{title}</span>
+      <span className="mt-4 block text-xl">{title}</span>
     </div>
   );
 };

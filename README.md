@@ -27,7 +27,7 @@ First of all, set up API Key
 ``
 1. Create `.env.local` file on the root path
 2. Inside the file, declare a variable with API Key, like this: `NEXT_PUBLIC_MOVIE_API_KEY=<your-api-key>`
-   or use `top_100_movies.json file`
+   or use `top_100_movies.json file` as default
 ``
 
 ## Getting Started

@@ -11,7 +11,7 @@ import FilterBar from "@/components/FilterBar";
 const Home = () => {
   const [searchText, setSearchText] = React.useState("");
   const [filteredMovieData, setFilteredMovieData] = React.useState(movieData);
-  console.log(movieData)
+
   const handleSearch = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
     const newSearchText = e.currentTarget.value;
@@ -33,7 +33,7 @@ const Home = () => {
 
   return (
     <div className="w-full max-w-7xl mx-auto py-32">
-        <h1 className="text-4xl mb-12">Top 100 Movies</h1>
+        <h1 className="text-4xl mb-12 font-bold">Top 100 Movies</h1>
         <form className="flex justify-between items-center mb-16">
           <SearchBar
             id={"search-movie"}

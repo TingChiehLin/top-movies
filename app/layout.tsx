@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${lato.className} tracking-wider h-screen flex flex-col`}
+        className={`${lato.className} tracking-wider leading-loose text-slate-700 h-screen flex flex-col`}
       >
         <HomeContainer>
           <NavigationBar />
