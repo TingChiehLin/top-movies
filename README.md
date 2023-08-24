@@ -80,3 +80,5 @@ To learn more about the project, take a look at the following resources:
 - [Remove duplicate values from JS Array](https://stackoverflow.com/questions/9229645/remove-duplicate-values-from-js-array)
 
 - [Array.from method creates a new, shallow-copied](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from)
+
+- [Responsive TailwildCSS Embed Video](https://www.themes.dev/blog/easily-embed-responsive-youtube-video-with-tailwind-css/)
