@@ -21,7 +21,7 @@ const FavMovie:FC<MovieCardPropType> = ({...props}) => {
     const {favMovies, addFavMovie, removeFavMovie} = React.useContext(MoviesContext);
     const {imdbid,imgURL, rating, title, trailer} = props;
     const movie = movieData.find((movie) => movie.imdbid === imdbid);
-
+    console.log(trailer)
     React.useEffect(() => {
         const favMovie = favMovies.find((favMovie) => favMovie.imdbid === imdbid)
         if(favMovie) {
@@ -50,7 +50,7 @@ const FavMovie:FC<MovieCardPropType> = ({...props}) => {
                 className="w-full rounded-lg"
                 alt={`${title} image`}
             />
-            <span className="font-bold text-xl mt-4 block">{title}</span>
+            <span className="font-medium text-xl mt-4 block">{title}</span>
             <div className="flex gap-4 mt-2">
                 <div className="flex items-center gap-1.5">
                     <span>Rating {rating}</span>
@@ -68,11 +68,11 @@ const FavMovie:FC<MovieCardPropType> = ({...props}) => {
                     />
                 </div>
             </div>
-            <div className="flex items-center gap-1.5 mt-2">
+            <div className="flex items-center gap-1.5 mt-1">
                     <span>Favorite</span>
                     {isFavourited ?  
-                                    <HiMiniHeart className="cursor-pointer" size={'1.5rem'} 
-                                                    onClick={() => handleRemoveFav(imdbid)} color="red"/> : 
+                                    <HiMiniHeart className="cursor-pointer text-favouriteColor" size={'1.5rem'} 
+                                                    onClick={() => handleRemoveFav(imdbid)}/> : 
                                     <HiOutlineHeart className="cursor-pointer" size={'1.5rem'} 
                                                     onClick={() => handleAddFav(movie as MovieField)}
                     />}

@@ -38,7 +38,7 @@ const MovieItem: FC<MovieItemTypeProp> = ({
           <span className="text-white -mt-1">{rating}</span>
         </div>
       </Link>
-      <span className="mt-4 block text-xl">{title}</span>
+      <span className="font-medium mt-4 block text-xl">{title}</span>
     </div>
   );
 };

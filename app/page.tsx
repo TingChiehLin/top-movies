@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { NextPage } from "next/types";
 
 import MovieSection from "@/components/MovieSection/MovieSection";
 import SearchBar from "@/components/SearchBar/SearchBar";
@@ -8,7 +9,15 @@ import SearchBar from "@/components/SearchBar/SearchBar";
 import movieData from "../lib/top_100_movies.json";
 import FilterBar from "@/components/FilterBar";
 
-const Home = () => {
+type HomeTypeField = {
+  [key: string]: string | string[] | undefined
+}
+
+interface HomePropType {
+  searchParams: HomePropType
+}
+
+const Home:NextPage<HomePropType> = () => {
   const [searchText, setSearchText] = React.useState("");
   const [filteredMovieData, setFilteredMovieData] = React.useState(movieData);
 

@@ -54,7 +54,7 @@ const MovieDetail: React.FC<PropType> = ({ params }) => {
       <h1 className="text-4xl">{title}</h1>
       <div className="flex items-center gap-2">
       <span className="text-sm">Save to favourite list</span>
-      {isFavourited ?  <HiMiniHeart className="cursor-pointer" size={'2.2rem'} onClick={() => handleRemoveFav(imdbid)} color="red"/> : <HiOutlineHeart className="cursor-pointer" size={'2.2rem'} onClick={() => handleAddFav(movie as MovieField)}/>}
+      {isFavourited ?  <HiMiniHeart className="cursor-pointer text-favouriteColor" size={'2.2rem'} onClick={() => handleRemoveFav(imdbid)} /> : <HiOutlineHeart className="cursor-pointer" size={'2.2rem'} onClick={() => handleAddFav(movie as MovieField)}/>}
       </div>
     </div>);
 };

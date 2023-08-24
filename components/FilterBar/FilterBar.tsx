@@ -21,15 +21,13 @@ const FilterBar: React.FC<FilterTypeProp> = ({ id, updateFilter }) => {
     updateFilter(newSearchText);
   };
 
-  const handleClickOutside = () => {};
-
   return (
     <div className="relative w-full flex items-center gap-4">
       <label className="text-xl" htmlFor={id}>Genre:</label>
       <select
         id={id}
         value={value}
-        className="pl-4 pr-8 py-2 outline-0 bg-sky-700 text-white rounded-lg cursor-pointer appearance-none"
+        className="pl-5 pr-8 py-2 outline-0 bg-sky-700 text-white rounded-lg cursor-pointer appearance-none"
         onChange={handChange}
       >
         {genres.map((option) => (
@@ -44,7 +42,7 @@ const FilterBar: React.FC<FilterTypeProp> = ({ id, updateFilter }) => {
       </select>
       <FiChevronDown
         size={16}
-        className={"absolute right-3 top-1/2 -translate-y-1/2"}
+        className={"absolute right-4 top-1/2 -translate-y-1/2"}
         color="white"
       />
     </div>
