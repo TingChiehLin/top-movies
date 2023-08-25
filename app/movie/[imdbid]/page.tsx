@@ -49,8 +49,9 @@ const MovieDetail: React.FC<PropType> = ({ params }) => {
     removeFavMovie(_imdbid);
     setIsFavourited(false)
   }
-  return( 
-    <div>
+
+  return(
+    <div className="w-full w-max-7xl mx-auto h-auto py-4 md:py-12 bg-red-300">
       <h1 className="text-4xl">{title}</h1>
       <div className="flex items-center gap-2">
       <span className="text-sm">Save to favourite list</span>

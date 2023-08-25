@@ -9,10 +9,10 @@ import profileImage from '../../public/assets/me.jpg';
 
 const AboutPage = () => {
   return (
-  <div className='w-full max-w-7xl mx-auto h-auto py-32'>
+  <div className='w-full max-w-7xl mx-auto h-auto py-4 md:py-12'>
    <BackPage href={"/"}/>
    <div className='flex gap-20'>
-      <Image className='rounded-lg w-[164px] md:w-[417px]' src={profileImage} alt={'profile-image'} width="417" height="626" sizes='100vw'/>
+      <Image className='rounded-lg w-full md:w-[320px]' src={profileImage} alt={'profile-image'} width="417" height="626" sizes='100vw'/>
       <div className='full max-w-2xl flex justify-between flex-col'>
         <div id="content">
           <h1 className='text-4xl'>DISCOVERY TOP MOVIE 100</h1>
