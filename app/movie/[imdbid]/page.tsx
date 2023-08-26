@@ -30,7 +30,7 @@ const MovieDetail: NextPage<PropType> = ({ params }) => {
   const {
     title,
     rating,
-    id,
+    id:topRank,
     year,
     image,
     description,
@@ -73,6 +73,15 @@ const MovieDetail: NextPage<PropType> = ({ params }) => {
                           <VideoPlayer videoId={videoId}/> 
                       </Modal>
       }
+      <p>{rating}</p>
+      <p>{year}</p>
+      <p>{topRank}</p>
+      <p>{image}</p>
+      <p>{description}</p>
+      <p>{trailer}</p>
+      <p>{genre}</p>
+      <p>{director}</p>
+      <p>{writers}</p>
       <Trailer handleModal={handleModal}/>
       <FavIcon movie={movie} imdbid={imdbid} isFavourited={isFavourited} handleAddFav={handleAddFav} handleRemoveFav={handleRemoveFav}/>
     </PageContainer>

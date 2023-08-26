@@ -22,7 +22,7 @@ const AboutPage = () => {
           <br/>
           <p>First of all, I sketch my general ideas and look for inspiration. Then, I make a muck up with some of colors. Finanlly, I transfer my design into coding with <strong>Next.js | React | TypeScript | TailwildCSS | HTML5</strong></p>
         </div>
-        <div className='w-40 flex flex-col gap-3'>
+        <div className='w-40 flex flex-col gap-2'>
           <SocialGroup title={"Contact Me"} href={"https://www.linkedin.com/in/cooloojayoo/"}>
             <FaLinkedin size={"2rem"} className='text-secondaryColor cursor-pointer'/>
           </SocialGroup>

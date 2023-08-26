@@ -2,17 +2,17 @@ import React from 'react';
 import Image from "next/image";
 import { redirect } from 'next/navigation';
 import { FC } from "react";
-import { HiMiniStar,HiMiniHeart,HiOutlineHeart, HiXMark } from "react-icons/hi2";
+import Link from 'next/link';
 import { MovieField } from '@/lib/movieField';
 
 import { MoviesContext } from "@/context/movieData.context";
 import movieData from "@/lib/top_100_movies.json";
-import TrailerIcon from '../../public/assets/play_video.svg';
 
 import VideoPlayer from '../VideoPlayer';
 import Modal from '../Modal';
 import Trailer from '../Trailer';
 import FavIcon from '../FavIcon';
+import Rating from '../Rating';
 
 interface MovieCardPropType {
     imdbid: string,
@@ -61,21 +61,19 @@ const FavMovie:FC<MovieCardPropType> = ({...props}) => {
                             </Modal>
             }
             <div className="w-full max-w-xs">
-                <Image
-                    src={imgURL}
-                    width="0"
-                    height="0"
-                    sizes="100vw"
-                    className="w-full rounded-lg"
-                    alt={`${title} image`}
-                />
+                <Link href={`/movie/${imdbid}`}>
+                    <Image
+                        src={imgURL}
+                        width="0"
+                        height="0"
+                        sizes="100vw"
+                        className="w-full rounded-lg"
+                        alt={`${title} image`}
+                    />
+                </Link>
                 <span className="font-medium text-xl mt-4 block">{title}</span>
-
                 <div className="flex gap-4 mt-2">
-                    <div className="flex items-center gap-2">
-                        <span>Rating {rating}</span>
-                        <HiMiniStar size={"1.5rem"} className="text-yellow-400" />
-                    </div>
+                    <Rating rank={rating}/>
                     <Trailer handleModal={handleModal}/>
                 </div>
                 <FavIcon movie={movie} imdbid={imdbid} isFavourited={isFavourited} handleAddFav={handleAddFav} handleRemoveFav={handleRemoveFav}/>
