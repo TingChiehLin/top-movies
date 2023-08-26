@@ -2,10 +2,18 @@
 
 import * as React from "react";
 import {redirect} from 'next/navigation';
+import { NextPage } from "next";
+
 import { MovieField } from "@/lib/movieField";
 import {HiMiniHeart,HiOutlineHeart } from "react-icons/hi2";
 import { MoviesContext } from "@/context/movieData.context";
 import movieData from "../../../lib/top_100_movies.json";
+
+import PageContainer from "@/layouts/PageContainer";
+import Modal from "@/components/Modal";
+import VideoPlayer from "@/components/VideoPlayer";
+import Trailer from "@/components/Trailer";
+import FavIcon from "@/components/FavIcon";
 
 interface PropType {
   params: {
@@ -13,11 +21,12 @@ interface PropType {
   };
 }
 
-const MovieDetail: React.FC<PropType> = ({ params }) => {
+const MovieDetail: NextPage<PropType> = ({ params }) => {
   const [isFavourited, setIsFavourited] = React.useState(false);
+  const [isOpenModal, setIsOpenModal] = React.useState(false);
   const {favMovies, addFavMovie, removeFavMovie} = React.useContext(MoviesContext);
   const movie = movieData.find((movie) => movie.imdbid === params.imdbid);
-  if(movie === undefined) redirect("/");
+  
   const {
     title,
     rating,
@@ -31,6 +40,9 @@ const MovieDetail: React.FC<PropType> = ({ params }) => {
     writers,
     imdbid
   } = movie as MovieField;
+  const videoId = trailer.split('/embed/')[1];
+
+  if(movie === undefined) redirect("/");
 
   React.useEffect(() => {
     const favMovie = favMovies.find((favMovie) => favMovie.imdbid === params.imdbid)
@@ -50,14 +62,21 @@ const MovieDetail: React.FC<PropType> = ({ params }) => {
     setIsFavourited(false)
   }
 
+  const handleModal = () => {
+    setIsOpenModal(!isOpenModal)
+  }
+
   return(
-    <div className="w-full w-max-7xl mx-auto h-auto py-4 md:py-12 bg-red-300">
-      <h1 className="text-4xl">{title}</h1>
-      <div className="flex items-center gap-2">
-      <span className="text-sm">Save to favourite list</span>
-      {isFavourited ?  <HiMiniHeart className="cursor-pointer text-favouriteColor" size={'2.2rem'} onClick={() => handleRemoveFav(imdbid)} /> : <HiOutlineHeart className="cursor-pointer" size={'2.2rem'} onClick={() => handleAddFav(movie as MovieField)}/>}
-      </div>
-    </div>);
+    <PageContainer title={title}>
+      {isOpenModal && 
+                      <Modal isOpenModal={isOpenModal} handleCancel={handleModal}>                               
+                          <VideoPlayer videoId={videoId}/> 
+                      </Modal>
+      }
+      <Trailer handleModal={handleModal}/>
+      <FavIcon movie={movie} imdbid={imdbid} isFavourited={isFavourited} handleAddFav={handleAddFav} handleRemoveFav={handleRemoveFav}/>
+    </PageContainer>
+  )
 };
 
 export default MovieDetail;

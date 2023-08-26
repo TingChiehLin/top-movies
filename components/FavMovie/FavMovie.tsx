@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from "next/image";
+import { redirect } from 'next/navigation';
 import { FC } from "react";
 import { HiMiniStar,HiMiniHeart,HiOutlineHeart, HiXMark } from "react-icons/hi2";
 import { MovieField } from '@/lib/movieField';
@@ -9,6 +10,9 @@ import movieData from "@/lib/top_100_movies.json";
 import TrailerIcon from '../../public/assets/play_video.svg';
 
 import VideoPlayer from '../VideoPlayer';
+import Modal from '../Modal';
+import Trailer from '../Trailer';
+import FavIcon from '../FavIcon';
 
 interface MovieCardPropType {
     imdbid: string,
@@ -26,6 +30,8 @@ const FavMovie:FC<MovieCardPropType> = ({...props}) => {
     const movie = movieData.find((movie) => movie.imdbid === imdbid);
     const videoId = trailer.split('/embed/')[1];
  
+    if(movie === undefined) redirect("/");
+
     React.useEffect(() => {
         const favMovie = favMovies.find((favMovie) => favMovie.imdbid === imdbid)
         if(favMovie) {
@@ -50,17 +56,9 @@ const FavMovie:FC<MovieCardPropType> = ({...props}) => {
     return (
         <> 
             {isOpenModal && 
-                            <div className='fixed inset-0 z-10'>
-                                <div className={`fixed inset-0 w-full max-h-full over-flow-x-auto overflow-y-auto transition-opacity east-out duration-400 opacity-100 bg-black z-30
-                                                ${isOpenModal && "opacity-70"} `}
-                                >
-                                </div>
+                            <Modal isOpenModal={isOpenModal} handleCancel={handleModal}>                               
                                 <VideoPlayer videoId={videoId}/> 
-                                <HiXMark size={"2rem"} color='white' 
-                                             className='absolute right-10 top-10 z-50 cursor-pointer'
-                                             onClick={handleModal}
-                                />
-                            </div>
+                            </Modal>
             }
             <div className="w-full max-w-xs">
                 <Image
@@ -72,33 +70,15 @@ const FavMovie:FC<MovieCardPropType> = ({...props}) => {
                     alt={`${title} image`}
                 />
                 <span className="font-medium text-xl mt-4 block">{title}</span>
+
                 <div className="flex gap-4 mt-2">
-                    <div className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-2">
                         <span>Rating {rating}</span>
                         <HiMiniStar size={"1.5rem"} className="text-yellow-400" />
                     </div>
-                    <div className="flex items-center gap-1.5">
-                        <span>Trailer</span>
-                        <Image 
-                            src={TrailerIcon}
-                            width="0"
-                            height="0"
-                            sizes='100vw'
-                            className='w-6 rounded-lg cursor-pointer'
-                            alt={"trailer icon"}
-                            onClick={handleModal}
-                        />
-                    </div>
+                    <Trailer handleModal={handleModal}/>
                 </div>
-                <div className="flex items-center gap-1.5 mt-1">
-                        <span>Favorite</span>
-                        {isFavourited ?  
-                                        <HiMiniHeart className="cursor-pointer text-favouriteColor" size={'1.5rem'} 
-                                                        onClick={() => handleRemoveFav(imdbid)}/> : 
-                                        <HiOutlineHeart className="cursor-pointer" size={'1.5rem'} 
-                                                        onClick={() => handleAddFav(movie as MovieField)}
-                        />}
-                </div>
+                <FavIcon movie={movie} imdbid={imdbid} isFavourited={isFavourited} handleAddFav={handleAddFav} handleRemoveFav={handleRemoveFav}/>
             </div>
         </>
     )

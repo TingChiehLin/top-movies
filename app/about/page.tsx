@@ -6,16 +6,16 @@ import SocialGroup from '@/components/SocialGroup';
 import BackPage from '@/components/BackPage';
 
 import profileImage from '../../public/assets/me.jpg';
+import PageContainer from '@/layouts/PageContainer';
 
 const AboutPage = () => {
   return (
-  <div className='w-full max-w-7xl mx-auto h-auto py-4 md:py-12'>
-   <BackPage href={"/"}/>
+  <PageContainer>
    <div className='flex gap-20'>
       <Image className='rounded-lg w-full md:w-[320px]' src={profileImage} alt={'profile-image'} width="417" height="626" sizes='100vw'/>
       <div className='full max-w-2xl flex justify-between flex-col'>
         <div id="content">
-          <h1 className='text-4xl'>DISCOVERY TOP MOVIE 100</h1>
+          <h1 className='text-4xl'>DISCOVERY TOP MOVIE 100 App</h1>
           <p className='mt-12'>Hello there 👋</p>
           <br/>
           <p>My name is Jay Lin, I make movie app is aimed for people who love to watch movies with top 100，They also are able to add movies into favourite list</p>
@@ -32,7 +32,7 @@ const AboutPage = () => {
         </div>
       </div>
     </div>
-  </div>)
+  </PageContainer>)
 };
 
 export default AboutPage;
