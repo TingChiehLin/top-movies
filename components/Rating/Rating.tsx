@@ -7,9 +7,9 @@ interface RatingTypeProp {
 
 const Rating:FC<RatingTypeProp> = ({rank}) => {
     return (
-        <div className="flex items-center gap-2">
-            <span>Rating:{rank}</span>
+        <div className="flex justify-center items-center gap-2">
             <HiMiniStar size={"1.5rem"} className="text-yellow-400"/>
+            <span className="text-slate-600 select-none">Rating <span className="font-semibold">{rank}</span></span>
         </div>
     )
 }

@@ -6,11 +6,10 @@ import TrailerIcon from '../../public/assets/play_video.svg';
 interface TrailerTypeProp {
     handleModal: () => void
 }
-
+    
 const Trailer:FC<TrailerTypeProp> = ({handleModal}) => {
     return (
         <div className="flex items-center gap-2">
-            <span>Trailer</span>
             <Image 
                 src={TrailerIcon}
                 width="0"
@@ -20,7 +19,8 @@ const Trailer:FC<TrailerTypeProp> = ({handleModal}) => {
                 alt={"trailer icon"}
                 onClick={handleModal}
             />
-    </div>
+            <span className="text-slate-600 select-none">Trailer</span>
+        </div>
     )
 }
 

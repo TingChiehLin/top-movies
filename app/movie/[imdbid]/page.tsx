@@ -5,7 +5,6 @@ import {redirect} from 'next/navigation';
 import { NextPage } from "next";
 
 import { MovieField } from "@/lib/movieField";
-import {HiMiniHeart,HiOutlineHeart } from "react-icons/hi2";
 import { MoviesContext } from "@/context/movieData.context";
 import movieData from "../../../lib/top_100_movies.json";
 
@@ -14,6 +13,8 @@ import Modal from "@/components/Modal";
 import VideoPlayer from "@/components/VideoPlayer";
 import Trailer from "@/components/Trailer";
 import FavIcon from "@/components/FavIcon";
+import Rating from "@/components/Rating";
+import Image from "next/image";
 
 interface PropType {
   params: {
@@ -32,7 +33,7 @@ const MovieDetail: NextPage<PropType> = ({ params }) => {
     rating,
     id:topRank,
     year,
-    image,
+    image: imgURL,
     description,
     trailer,
     genre,
@@ -43,6 +44,10 @@ const MovieDetail: NextPage<PropType> = ({ params }) => {
   const videoId = trailer.split('/embed/')[1];
 
   if(movie === undefined) redirect("/");
+
+  const newGenre = genre;
+  const newWriter = writers.join('').replace(" (screenplay by)","");
+  console.log(newWriter);
 
   React.useEffect(() => {
     const favMovie = favMovies.find((favMovie) => favMovie.imdbid === params.imdbid)
@@ -73,17 +78,40 @@ const MovieDetail: NextPage<PropType> = ({ params }) => {
                           <VideoPlayer videoId={videoId}/> 
                       </Modal>
       }
-      <p>{rating}</p>
-      <p>{year}</p>
-      <p>{topRank}</p>
-      <p>{image}</p>
-      <p>{description}</p>
-      <p>{trailer}</p>
-      <p>{genre}</p>
-      <p>{director}</p>
-      <p>{writers}</p>
-      <Trailer handleModal={handleModal}/>
-      <FavIcon movie={movie} imdbid={imdbid} isFavourited={isFavourited} handleAddFav={handleAddFav} handleRemoveFav={handleRemoveFav}/>
+      <div className="flex gap-16">
+       <Image
+          src={imgURL}
+          width="0"
+          height="0"
+          sizes="100vw"
+          className="w-full max-w-xs rounded-lg"
+          alt={`${title} image`}
+      />
+        <div className="flex flex-col justify-between">
+          <div className="flex flex-col gap-4">
+            <div className="flex gap-6 items-center">
+              <span className="uppercase text-xl font-semibold">{topRank}</span>
+              <Rating rank={rating}/>
+            </div>
+            <span className="font-semibold">Release Date</span>
+            <span className="text-slate-600">{year}</span>
+            <span className="font-semibold">Director</span>
+            <span className="text-slate-600">{director}</span>
+            <span className="font-semibold">Genre</span>
+            <div className="flex gap-2">
+              {newGenre.map((genre, index) => <span key={`${imdbid}_${genre}`} className="text-slate-600">{genre + (`${index !== (newGenre.length - 1) && ","}`)}</span>)}
+            </div> 
+            <span className="font-semibold">Writer</span>
+            <p className="text-slate-600">{writers}</p>
+          </div>
+          <div className="flex gap-4">
+            <Trailer handleModal={handleModal}/>
+            <FavIcon movie={movie} imdbid={imdbid} isFavourited={isFavourited} handleAddFav={handleAddFav} handleRemoveFav={handleRemoveFav}/>
+          </div>
+        </div>
+      </div>
+      {/* 48 */}
+      <p className="w-full max-w-3xl mt-6 text-slate-600">{description}</p>
     </PageContainer>
   )
 };

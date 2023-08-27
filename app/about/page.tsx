@@ -11,7 +11,7 @@ import PageContainer from '@/layouts/PageContainer';
 const AboutPage = () => {
   return (
   <PageContainer>
-   <div className='flex gap-20'>
+   <div className='flex gap-16'>
       <Image className='rounded-lg w-full md:w-[320px]' src={profileImage} alt={'profile-image'} width="417" height="626" sizes='100vw'/>
       <div className='full max-w-2xl flex justify-between flex-col'>
         <div id="content">

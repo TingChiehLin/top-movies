@@ -13,9 +13,9 @@ interface FavIconTypeProp {
 const FavIcon:FC<FavIconTypeProp> = ({movie, imdbid, isFavourited, handleAddFav, handleRemoveFav}) => {
     return (
         <div className="flex items-center gap-2">
-            <span>Favorite</span>
             {isFavourited ?  <HiMiniHeart className="cursor-pointer text-favouriteColor" size={'1.5rem'} onClick={() => handleRemoveFav(imdbid)} /> 
                         :  <HiOutlineHeart className="cursor-pointer" size={'1.5rem'} onClick={() => handleAddFav(movie as MovieField)}/>}
+            <span className="text-slate-600 select-none">Favorite</span>                
         </div>
     )
 }
