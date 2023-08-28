@@ -22,6 +22,19 @@ interface PropType {
   };
 }
 
+const filterWriterName = (writers: string[]) => {
+  //Challenge here to filter extra information
+  //(book)
+  //(story)
+  //(screenplay)
+  //(based on the novel by)
+  const formatResult = writers.map((writer, index) =>
+                      <span key={`${writer}_${index}`} className="text-slate-600">
+                        {writer + (`${index !== (writers.length - 1) ? ", " : ""}`)}
+                      </span>)
+  return formatResult;
+}
+
 const MovieDetail: NextPage<PropType> = ({ params }) => {
   const [isFavourited, setIsFavourited] = React.useState(false);
   const [isOpenModal, setIsOpenModal] = React.useState(false);
@@ -36,7 +49,7 @@ const MovieDetail: NextPage<PropType> = ({ params }) => {
     image: imgURL,
     description,
     trailer,
-    genre,
+    genre:genres,
     director,
     writers,
     imdbid
@@ -45,9 +58,7 @@ const MovieDetail: NextPage<PropType> = ({ params }) => {
 
   if(movie === undefined) redirect("/");
 
-  const newGenre = genre;
-  const newWriter = writers.join('').replace(" (screenplay by)","");
-  console.log(newWriter);
+  const newWriters = filterWriterName(writers);
 
   React.useEffect(() => {
     const favMovie = favMovies.find((favMovie) => favMovie.imdbid === params.imdbid)
@@ -84,34 +95,32 @@ const MovieDetail: NextPage<PropType> = ({ params }) => {
           width="0"
           height="0"
           sizes="100vw"
-          className="w-full max-w-xs rounded-lg"
+          className="w-full max-w-sm rounded-lg"
           alt={`${title} image`}
       />
-        <div className="flex flex-col justify-between">
-          <div className="flex flex-col gap-4">
-            <div className="flex gap-6 items-center">
-              <span className="uppercase text-xl font-semibold">{topRank}</span>
-              <Rating rank={rating}/>
-            </div>
-            <span className="font-semibold">Release Date</span>
-            <span className="text-slate-600">{year}</span>
-            <span className="font-semibold">Director</span>
-            <span className="text-slate-600">{director}</span>
-            <span className="font-semibold">Genre</span>
-            <div className="flex gap-2">
-              {newGenre.map((genre, index) => <span key={`${imdbid}_${genre}`} className="text-slate-600">{genre + (`${index !== (newGenre.length - 1) && ","}`)}</span>)}
-            </div> 
-            <span className="font-semibold">Writer</span>
-            <p className="text-slate-600">{writers}</p>
-          </div>
-          <div className="flex gap-4">
+        <div className="flex flex-col justify-between gap-4">
+          <span className="uppercase text-2xl font-semibold text-primaryColor">{topRank}</span>
+          <span className="font-semibold">Release Date</span>
+          <span className="text-slate-600">{year}</span>
+          <span className="font-semibold">Director</span>
+          <span className="text-slate-600">{director}</span>
+          <span className="font-semibold">Genre</span>
+          <div className="flex gap-2">
+            {genres.map((genre, index) => <span key={`${imdbid}_${genre}`} className="text-slate-600">{genre + (`${index !== (genres.length - 1) && ","}`)}</span>)}
+          </div> 
+          <span className="font-semibold">Writer</span>
+            {newWriters}           
+          <div className="flex gap-6">
+            <Rating rank={rating}/>
             <Trailer handleModal={handleModal}/>
             <FavIcon movie={movie} imdbid={imdbid} isFavourited={isFavourited} handleAddFav={handleAddFav} handleRemoveFav={handleRemoveFav}/>
           </div>
         </div>
       </div>
-      {/* 48 */}
-      <p className="w-full max-w-3xl mt-6 text-slate-600">{description}</p>
+      <div className="mt-12">
+        <h2 className="text-2xl font-semibold text-primaryColor">Synopsis</h2>
+        <p className="w-full max-w-4xl text-slate-600 mt-3">{description}</p>
+      </div>
     </PageContainer>
   )
 };
