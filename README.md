@@ -14,6 +14,7 @@ Top Movies App includes a list of top 100 movies, where you can search and save 
 - [Tech I used](#tech-i-used)
 - [API](#api)
 - [Design](#design)
+- [Future plan](#future-plan)
 - [Learn More](#learn-more)
 
 ## Demo
@@ -66,6 +67,11 @@ Font
 Color
 
 - [Sky & Slate](https://tailwindcss.com/docs/customizing-colors)
+
+## Future plan
+
+- Pagination in order to improve UX
+- Responsive Design 
 
 ## Learn More
 
