@@ -24,11 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${lato.className} tracking-wider h-screen flex flex-col`}
+        className={`${lato.className} tracking-wider leading-loose text-slate-700 h-screen flex flex-col`}
       >
         <HomeContainer>
           <NavigationBar />
-          <main className="bg-slate-100 p-32 flex-1">{children}</main>
+          <main className="w-full h-auto flex-1 bg-slate-100">{children}</main>
           <Footer />
         </HomeContainer>
       </body>

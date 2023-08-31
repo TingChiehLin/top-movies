@@ -25,10 +25,10 @@ You can see my project on Vercel [Demo Link]()
 First of all, set up API Key
 
 ``
-
 1. Create `.env.local` file on the root path
 2. Inside the file, declare a variable with API Key, like this: `NEXT_PUBLIC_MOVIE_API_KEY=<your-api-key>`
-   ``
+   or use `top_100_movies.json file` as default
+``
 
 ## Getting Started
 
@@ -48,6 +48,7 @@ yarn dev
 - Next.js 13
 - TailwindCSS
 - React Icon
+- React Context API
 - Test Library(Jest and Cypress)
 
 ## API
@@ -79,3 +80,5 @@ To learn more about the project, take a look at the following resources:
 - [Remove duplicate values from JS Array](https://stackoverflow.com/questions/9229645/remove-duplicate-values-from-js-array)
 
 - [Array.from method creates a new, shallow-copied](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from)
+
+- [Responsive TailwildCSS Embed Video](https://www.themes.dev/blog/easily-embed-responsive-youtube-video-with-tailwind-css/)

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { MovieField } from "@/lib/MovieField";
+import { MovieField } from "@/lib/movieField";
 
 interface TypeProps {
   children: React.ReactNode;
@@ -31,8 +31,6 @@ export const MovieContextProvider: React.FC<TypeProps> = ({ children }) => {
      setFavMovies(prevMovie => prevMovie.filter(movie => movie.imdbid !== _imdbid))
   }
   
-  console.log('favMovies',favMovies);
-
   return (
     <MoviesContext.Provider value={{favMovies,addFavMovie:handleAddFavMovie,removeFavMovie: handleRemoveFavMovie}}>
       {children}

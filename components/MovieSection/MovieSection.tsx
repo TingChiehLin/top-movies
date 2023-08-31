@@ -1,10 +1,10 @@
 import { FC } from "react";
 import MovieItem from "../MovieItem";
 
-import { movieField } from "@/lib/MovieField";
+import { MovieField } from "@/lib/movieField";
 
 interface MovieSectionPropType {
-  movieData: movieField[];
+  movieData: MovieField[];
 }
 
 const MovieSection: FC<MovieSectionPropType> = ({ movieData }) => {
