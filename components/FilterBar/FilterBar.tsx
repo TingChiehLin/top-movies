@@ -26,7 +26,7 @@ const FilterBar: React.FC<FilterTypeProp> = ({ id, updateFilter }) => {
       <select
         id={id}
         value={value}
-        className="pl-5 pr-8 py-2 outline-0 bg-sky-700 text-white rounded-lg cursor-pointer appearance-none"
+        className="pl-5 pr-10 py-2 outline-0 bg-sky-700 text-white rounded-lg cursor-pointer appearance-none"
         onChange={handChange}
       >
         {genres.map((option) => (
