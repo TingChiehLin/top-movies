@@ -13,12 +13,11 @@ interface FilterTypeProp {
 const FilterBar: React.FC<FilterTypeProp> = ({ id, updateFilter }) => {
   const genres = getAllFilterGenres();
   const [value, setValue] = React.useState(genres[0]);
-  const ref = React.useRef();
 
   const handChange = (e: React.FormEvent<HTMLSelectElement>) => {
     const newSearchText = e.currentTarget.value;
-    setValue(newSearchText);
-    updateFilter(newSearchText);
+      setValue(newSearchText);
+      updateFilter(newSearchText);
   };
 
   return (
