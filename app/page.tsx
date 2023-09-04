@@ -18,8 +18,11 @@ interface HomePropType {
 const Home:NextPage<HomePropType> = () => {
   const [searchText, setSearchText] = React.useState("");
   const [filteredMovieData, setFilteredMovieData] = React.useState(movieData);
+  const [currentPage, setCurrentPage] = React.useState(1);
 
-  const formatData = filteredMovieData.slice(0, 4);
+  const start = (currentPage - 1) * 8;
+  const end = currentPage * 8;
+  const formatData = filteredMovieData.slice(start, end);
 
   const handleSearch = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -42,7 +45,12 @@ const Home:NextPage<HomePropType> = () => {
       return movie.genre.includes(filterGenre);
     });
     setFilteredMovieData(newFilteredMovieData);
+    setSearchText("");
   };
+
+  const handleCurrentPage = () => {
+    setCurrentPage(preState => preState + 1);
+  }
 
   const handleLastPage = () => {
 
@@ -53,35 +61,37 @@ const Home:NextPage<HomePropType> = () => {
   }
 
   return (
-    <div className="w-full max-w-7xl mx-auto pt-32 pb-16">
-        <h1 className="text-4xl mb-12 font-bold">Top 100 Movies</h1>
-        <form className="flex justify-between items-center">
-          <div>
-            <SearchBar
-              id={"search-movie"}
-              label={"search movie title"}
-              type={"search"}
-              name={"search-movie"}
-              value={searchText}
-              placeholder="Type movie name"
-              onChange={handleSearch}
-            />
-            {
-              searchText !== "" &&
-              <span className="text-sm mt-4 block">
-                Showing <span className="font-medium">{filteredMovieData.length}</span> to <span className="font-medium">{movieData.length}</span>
-              </span>
-            }
-          </div>
-          <div className="flex justify-center gap-4">
-            <FilterBar
-              id={"filter-genre"}
-              updateFilter={handleUpdateFilter}
-            />
-          </div>
-        </form>
-        {filteredMovieData.length === 0 ? "There is no any movies on the list" : <MovieSection movieData={formatData} />}
-        <PaginationBar initialIndex={1} currentIndex={4} lastPage={handleLastPage} nextPage={handleNextPage} />
+    <div className="w-full max-w-7xl h-full mx-auto pt-32 pb-16 flex flex-col justify-between">
+        <div>
+          <h1 className="text-4xl mb-12 font-bold">Top 100 Movies</h1>
+          <form className="flex justify-between items-center">
+            <div>
+              <SearchBar
+                id={"search-movie"}
+                label={"search movie title"}
+                type={"search"}
+                name={"search-movie"}
+                value={searchText}
+                placeholder="Type movie name"
+                onChange={handleSearch}
+              />
+              {
+                searchText !== "" &&
+                <span className="text-sm mt-4 block">
+                  Showing <span className="font-medium">{filteredMovieData.length}</span> to <span className="font-medium">{movieData.length}</span>
+                </span>
+              }
+            </div>
+            <div className="flex justify-center gap-4">
+              <FilterBar
+                id={"filter-genre"}
+                updateFilter={handleUpdateFilter}
+              />
+            </div>
+          </form>
+        </div>
+        {filteredMovieData.length === 0 ? <span className="text-2xl text-center">There is no any movies on the list</span> : <MovieSection movieData={formatData} />}
+        <PaginationBar lastPage={handleLastPage} nextPage={handleNextPage} />
     </div>
   );
 };

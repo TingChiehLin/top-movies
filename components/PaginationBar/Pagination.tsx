@@ -1,24 +1,22 @@
 import { FC } from "react";
 
 interface PaginationBarTypeProp {
-  initialIndex: number,
-  currentIndex: number,
   lastPage: () => void
   nextPage: () => void,
 }
 
 const PaginationBar:FC<PaginationBarTypeProp> = (props) => {
 
-    const {initialIndex, currentIndex, lastPage, nextPage} = props;
+    const {lastPage, nextPage} = props;
 
     return (
       <div
         className="flex items-center justify-between flex-col md:flex-row gap-6"
         aria-label="Pagination"
       >
-        <p className="text-sm">
+        {/* <p className="text-sm">
           All <span className="font-medium">{initialIndex}</span> of <span className="font-medium">{currentIndex}</span> results
-        </p>
+        </p> */}
         <div>
           pagnation
         </div>
