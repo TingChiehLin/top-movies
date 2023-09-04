@@ -9,7 +9,7 @@ interface MovieSectionPropType {
 
 const MovieSection: FC<MovieSectionPropType> = ({ movieData }) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 my-16">
       {movieData.map((movie) => {
         return (
           <MovieItem

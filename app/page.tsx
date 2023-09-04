@@ -5,9 +5,11 @@ import { NextPage } from "next/types";
 
 import MovieSection from "@/components/MovieSection/MovieSection";
 import SearchBar from "@/components/SearchBar/SearchBar";
+import Button from "@/components/Button/Button";
 
 import movieData from "../lib/top_100_movies.json";
 import FilterBar from "@/components/FilterBar";
+import PaginationBar from "@/components/PaginationBar";
 
 interface HomePropType {
   searchParams: HomePropType
@@ -16,6 +18,8 @@ interface HomePropType {
 const Home:NextPage<HomePropType> = () => {
   const [searchText, setSearchText] = React.useState("");
   const [filteredMovieData, setFilteredMovieData] = React.useState(movieData);
+
+  const formatData = filteredMovieData.slice(0, 4);
 
   const handleSearch = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -40,10 +44,18 @@ const Home:NextPage<HomePropType> = () => {
     setFilteredMovieData(newFilteredMovieData);
   };
 
+  const handleLastPage = () => {
+
+  }
+
+  const handleNextPage = () => {
+
+  }
+
   return (
-    <div className="w-full max-w-7xl mx-auto py-32">
+    <div className="w-full max-w-7xl mx-auto pt-32 pb-16">
         <h1 className="text-4xl mb-12 font-bold">Top 100 Movies</h1>
-        <form className="flex justify-between items-center mb-16">
+        <form className="flex justify-between items-center">
           <div>
             <SearchBar
               id={"search-movie"}
@@ -68,7 +80,8 @@ const Home:NextPage<HomePropType> = () => {
             />
           </div>
         </form>
-        {filteredMovieData.length === 0 ? "There is no any movies on the list" : <MovieSection movieData={filteredMovieData} />}
+        {filteredMovieData.length === 0 ? "There is no any movies on the list" : <MovieSection movieData={formatData} />}
+        <PaginationBar initialIndex={1} currentIndex={4} lastPage={handleLastPage} nextPage={handleNextPage} />
     </div>
   );
 };

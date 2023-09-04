@@ -3,38 +3,36 @@ import { FC } from "react";
 interface PaginationBarTypeProp {
   initialIndex: number,
   currentIndex: number,
+  lastPage: () => void
+  nextPage: () => void,
 }
 
-const PaginationBar:FC<PaginationBarTypeProp> = ({initialIndex, currentIndex}) => {
+const PaginationBar:FC<PaginationBarTypeProp> = (props) => {
 
-
-    const handleLastPage = () => {
-
-    }
-
-    const handleNextPage = () => {
-
-    }
+    const {initialIndex, currentIndex, lastPage, nextPage} = props;
 
     return (
       <div
-        className="flex items-center justify-between flex-col md:flex-row gap-6 mb-12"
+        className="flex items-center justify-between flex-col md:flex-row gap-6"
         aria-label="Pagination"
       >
         <p className="text-sm">
-          Showing <span className="font-medium">{initialIndex}</span> to <span className="font-medium">{currentIndex}</span>
+          All <span className="font-medium">{initialIndex}</span> of <span className="font-medium">{currentIndex}</span> results
         </p>
+        <div>
+          pagnation
+        </div>
         <div className="flex">
           <button
             type="button"
-            onClick={handleLastPage}
+            onClick={nextPage}
             className="relative inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-gray-300 hover:bg-gray-50"
           >
             Previous
           </button>
           <button
             type="button"
-            onClick={handleNextPage}
+            onClick={lastPage}
             className="relative ml-3 inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-gray-300 hover:bg-gray-50"
           >
             Next
