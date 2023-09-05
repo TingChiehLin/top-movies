@@ -23,14 +23,14 @@ const PaginationBar:FC<PaginationBarTypeProp> = (props) => {
         <div className="flex">
           <button
             type="button"
-            onClick={nextPage}
+            onClick={lastPage}
             className="relative inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-gray-300 hover:bg-gray-50"
           >
             Previous
           </button>
           <button
             type="button"
-            onClick={lastPage}
+            onClick={nextPage}
             className="relative ml-3 inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-gray-300 hover:bg-gray-50"
           >
             Next

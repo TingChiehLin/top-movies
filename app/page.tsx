@@ -20,9 +20,16 @@ const Home:NextPage<HomePropType> = () => {
   const [filteredMovieData, setFilteredMovieData] = React.useState(movieData);
   const [currentPage, setCurrentPage] = React.useState(1);
 
-  const start = (currentPage - 1) * 8;
-  const end = currentPage * 8;
+  //Limit to 8 movies per page
+  const postsPerPage = 8;
+  const start = (currentPage - 1) * postsPerPage;
+  const end = currentPage * postsPerPage;
   const formatData = filteredMovieData.slice(start, end);
+
+  // Get current movies
+  const indexOfLastMovie = currentPage * postsPerPage;
+  const indexOfFirstMovie = indexOfLastMovie - postsPerPage;
+
 
   const handleSearch = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -48,16 +55,16 @@ const Home:NextPage<HomePropType> = () => {
     setSearchText("");
   };
 
-  const handleCurrentPage = () => {
-    setCurrentPage(preState => preState + 1);
+  const handleCurrentPage = (index:number) => {
+    
   }
 
   const handleLastPage = () => {
-
+    setCurrentPage(preState => preState - 1);
   }
 
   const handleNextPage = () => {
-
+    setCurrentPage(preState => preState + 1);
   }
 
   return (
