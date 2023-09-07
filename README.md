@@ -70,7 +70,6 @@ Color
 
 ## Future plan
 
-- Pagination in order to improve UX
 - Responsive Design 
 
 ## Learn More

@@ -19,17 +19,16 @@ const Home:NextPage<HomePropType> = () => {
   const [searchText, setSearchText] = React.useState("");
   const [filteredMovieData, setFilteredMovieData] = React.useState(movieData);
   const [currentPage, setCurrentPage] = React.useState(1);
+  const [moviePerPage] = React.useState(8);
 
   //Limit to 8 movies per page
-  const postsPerPage = 8;
-  const start = (currentPage - 1) * postsPerPage;
-  const end = currentPage * postsPerPage;
+  const start = (currentPage - 1) * moviePerPage;
+  const end = currentPage * moviePerPage;
   const formatData = filteredMovieData.slice(start, end);
 
   // Get current movies
-  const indexOfLastMovie = currentPage * postsPerPage;
-  const indexOfFirstMovie = indexOfLastMovie - postsPerPage;
-
+  const indexOfLastMovie = currentPage * moviePerPage;
+  const indexOfFirstMovie = indexOfLastMovie - moviePerPage;
 
   const handleSearch = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -55,8 +54,8 @@ const Home:NextPage<HomePropType> = () => {
     setSearchText("");
   };
 
-  const handleCurrentPage = (index:number) => {
-    
+  const handlePageSelect = (index:number) => {
+    setCurrentPage(preState => preState = index);
   }
 
   const handleLastPage = () => {
@@ -98,7 +97,7 @@ const Home:NextPage<HomePropType> = () => {
           </form>
         </div>
         {filteredMovieData.length === 0 ? <span className="text-2xl text-center">There is no any movies on the list</span> : <MovieSection movieData={formatData} />}
-        <PaginationBar lastPage={handleLastPage} nextPage={handleNextPage} />
+        <PaginationBar moviePerPage={moviePerPage} totalMovies={movieData.length} handlePageSelect={handlePageSelect} lastPage={handleLastPage} nextPage={handleNextPage}/>
     </div>
   );
 };

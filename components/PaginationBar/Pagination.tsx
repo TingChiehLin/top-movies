@@ -1,41 +1,58 @@
 import { FC } from "react";
 
 interface PaginationBarTypeProp {
+  moviePerPage: number,
+  totalMovies: number,
+  handlePageSelect: (index: number) => void,
   lastPage: () => void
   nextPage: () => void,
 }
 
 const PaginationBar:FC<PaginationBarTypeProp> = (props) => {
 
-    const {lastPage, nextPage} = props;
+    const {moviePerPage, totalMovies, handlePageSelect, lastPage, nextPage} = props;
+
+    const pageNumbers = [];
+
+    for(let i = 1; i <= Math.ceil(totalMovies / moviePerPage); i++) { 
+      pageNumbers.push(i);
+    }
 
     return (
       <div
-        className="flex items-center justify-between flex-col md:flex-row gap-6"
+        className="flex items-center justify-center flex-col md:flex-row gap-2"
         aria-label="Pagination"
       >
-        {/* <p className="text-sm">
-          All <span className="font-medium">{initialIndex}</span> of <span className="font-medium">{currentIndex}</span> results
-        </p> */}
-        <div>
-          pagnation
+        <button
+          type="button"
+          onClick={lastPage}
+          className="relative inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-gray-300 hover:bg-gray-50"
+        >
+          Previous
+        </button>
+        <div className="flex gap-2">
+          {
+            pageNumbers.map((number) => {
+              
+              return (
+                <button key={number} 
+                      className="cursor-pointer select-none rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-gray-300 hover:bg-gray-50"
+                      type="button"
+                      onClick={() => handlePageSelect(number)}      
+                >
+                  {number}
+                </button>
+              )
+            })
+          }
         </div>
-        <div className="flex">
-          <button
-            type="button"
-            onClick={lastPage}
-            className="relative inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-gray-300 hover:bg-gray-50"
-          >
-            Previous
-          </button>
-          <button
+        <button
             type="button"
             onClick={nextPage}
-            className="relative ml-3 inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-gray-300 hover:bg-gray-50"
+            className="relative inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-gray-300 hover:bg-gray-50"
           >
             Next
-          </button>
-        </div>
+        </button>
       </div>
     )
   }
