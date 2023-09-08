@@ -1,4 +1,7 @@
 import { FC } from "react";
+
+import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
+
 import Button from "../Button";
 import PageButton from "../PageButton";
 
@@ -16,7 +19,7 @@ const PaginationBar:FC<PaginationBarTypeProp> = (props) => {
     const {currentPage, moviePerPage, totalMovies, handlePageSelect, handleLastPage, handleNextPage} = props;
     
     const pageNumbers = [];
-    const firstPage = currentPage <= 2;
+    const firstPage = currentPage <= 1;
     const lastPage = currentPage >= Math.ceil(totalMovies / moviePerPage);
 
     for(let i = 1; i <= Math.ceil(totalMovies / moviePerPage); i++) { 
@@ -28,19 +31,21 @@ const PaginationBar:FC<PaginationBarTypeProp> = (props) => {
         className="flex items-center justify-center flex-col md:flex-row gap-2"
         aria-label="Pagination"
       >
-        <Button title={"Previous"} type={"button"} isDisable={firstPage} onClick={handleLastPage}/>
-        
+        {firstPage ? <HiChevronLeft className="text-gray-300 cursor-pointer" size={"2rem"} />
+                   : <HiChevronLeft className="text-primaryColor cursor-pointer" size={"2rem"} 
+                                    onClick={handleLastPage}/>}
         <div className="flex gap-2">
           {
             pageNumbers.map((number) => {
               return (
-                <PageButton key={number} currentPage={currentPage}  title={number.toString()} type={"button"} isDisable={lastPage} onClick={() => handlePageSelect(number)}/>
+                <PageButton key={number} currentPage={currentPage} title={number.toString()} type={"button"} onClick={() => handlePageSelect(number)}/>
               )
             })
           }
         </div>
-
-        <Button title={"Next"} type={"button"} isDisable={lastPage} onClick={handleNextPage}/>
+        {lastPage ? <HiChevronRight className="text-gray-300 cursor-pointer" size={"2rem"} />
+                  : <HiChevronRight className="text-primaryColor cursor-pointer" size={"2rem"} 
+                                    onClick={handleNextPage}/>} 
       </div>
     )
   }

@@ -3,16 +3,16 @@ import { FC } from "react";
 type ButtonField = "button" | "submit" | "reset" | undefined;
 
 interface PageButtonTypeProp {
-    currentPage?: number,
-    title: string,  
+    title?: string,  
     type: ButtonField,
     isDisable?: boolean,
+    children?: React.ReactNode,
     onClick: () => void
 }
 
 const Button:FC<PageButtonTypeProp> = (props) => {
   
-  const {currentPage, title, type, isDisable, onClick} = props;
+  const {title, type, isDisable, children, onClick} = props;
 
   return (
     <button
@@ -24,7 +24,10 @@ const Button:FC<PageButtonTypeProp> = (props) => {
               `}
     disabled={isDisable}
     >
+      <div>
         <span className="">{title}</span>
+        {children}
+      </div>
   </button>
   )
 }
