@@ -51,7 +51,7 @@ const Home:NextPage<HomePropType> = () => {
   };
 
   const handlePageSelect = (index:number) => {
-    setCurrentPage(preState => preState = index);
+    setCurrentPage(index);
   }
 
   const handleLastPage = () => {
