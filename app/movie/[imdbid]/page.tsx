@@ -22,7 +22,7 @@ interface PropType {
   };
 }
 
-const filterWriterName = (writers: string[]) => {
+const filterName = (names: string[]) => {
   //Challenge here to filter extra information
   //(book)
   //(story)
@@ -30,7 +30,7 @@ const filterWriterName = (writers: string[]) => {
   //(based on the novel by)
   //(novel)
   //(narration)
-  const formatResult = writers.map((writer, index) => writer + (`${index !== (writers.length - 1) ? ", " : ""}`))
+  const formatResult = names.map((name, index) => name + (`${(index !== (names.length - 1)) ? ", " : ""}`))
                     
   return formatResult;
 }
@@ -58,7 +58,8 @@ const MovieDetail: NextPage<PropType> = ({ params }) => {
 
   if(movie === undefined) redirect("/");
 
-  const newWriters = filterWriterName(writers);
+  const newGenres = filterName(genres);
+  const newWriters = filterName(writers);
 
   React.useEffect(() => {
     const favMovie = favMovies.find((favMovie) => favMovie.imdbid === params.imdbid)
@@ -99,19 +100,21 @@ const MovieDetail: NextPage<PropType> = ({ params }) => {
           alt={`${title} image`}
       />
         <div className="flex flex-col justify-between">
-          <span className="uppercase text-2xl font-semibold text-primaryColor">{topRank}</span>
-          <span className="font-semibold">Release Date</span>
-          <span className="text-slate-600">{year}</span>
-          <span className="font-semibold">Director</span>
-          <span className="text-slate-600">{director}</span>
-          <span className="font-semibold">Genre</span>
-          <div className="flex gap-2">
-            {genres.map((genre, index) => <span key={`${imdbid}_${genre}`} className="text-slate-600">{genre + (`${index !== (genres.length - 1) && ","}`)}</span>)}
-          </div> 
-          <span className="font-semibold">Writer</span>    
-          <span className="text-slate-600">
-            {newWriters}
-          </span>    
+          <span className="uppercase text-3xl font-semibold text-primaryColor">{topRank}</span>
+          <div className="flex flex-col gap-6">
+            <span className="font-semibold">Release Date</span>
+            <span className="text-slate-500">{year}</span>
+            <span className="font-semibold">Director</span>
+            <span className="text-slate-500">{director}</span>
+            <span className="font-semibold">Genre</span>
+            <div className="flex gap-2">
+              {genres.map((genre) => <span key={`${imdbid}_${genre}`} className="text-slate-500">{newGenres}</span>)}
+            </div> 
+            <span className="font-semibold">Writer</span>    
+            <span className="text-slate-500">
+              {newWriters}
+            </span>
+          </div>
           <div className="flex gap-6">
             <Rating rank={rating}/>
             <Trailer handleModal={handleModal}/>
@@ -121,7 +124,7 @@ const MovieDetail: NextPage<PropType> = ({ params }) => {
       </div>
       <div className="mt-12">
         <h2 className="text-2xl font-semibold text-primaryColor">Synopsis</h2>
-        <p className="w-full max-w-4xl text-slate-600 mt-3">{description}</p>
+        <p className="w-full max-w-4xl text-slate-500 mt-3">{description}</p>
       </div>
     </PageContainer>
   )
