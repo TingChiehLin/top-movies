@@ -26,10 +26,6 @@ const Home:NextPage<HomePropType> = () => {
   const end = currentPage * moviePerPage;
   const formatData = filteredMovieData.slice(start, end);
 
-  // Get current movies
-  const indexOfLastMovie = currentPage * moviePerPage;
-  const indexOfFirstMovie = indexOfLastMovie - moviePerPage;
-
   const handleSearch = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
     const newSearchText = e.currentTarget.value;
@@ -97,7 +93,14 @@ const Home:NextPage<HomePropType> = () => {
           </form>
         </div>
         {filteredMovieData.length === 0 ? <span className="text-2xl text-center">There is no any movies on the list</span> : <MovieSection movieData={formatData} />}
-        <PaginationBar moviePerPage={moviePerPage} totalMovies={movieData.length} handlePageSelect={handlePageSelect} lastPage={handleLastPage} nextPage={handleNextPage}/>
+        <PaginationBar 
+                       currentPage={currentPage}
+                       moviePerPage={moviePerPage} 
+                       totalMovies={movieData.length} 
+                       handlePageSelect={handlePageSelect} 
+                       handleLastPage={handleLastPage}
+                       handleNextPage={handleNextPage}
+        />
     </div>
   );
 };
