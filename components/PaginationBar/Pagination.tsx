@@ -2,7 +2,6 @@ import { FC } from "react";
 
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 
-import Button from "../Button";
 import PageButton from "../PageButton";
 
 interface PaginationBarTypeProp {
@@ -18,14 +17,18 @@ const PaginationBar:FC<PaginationBarTypeProp> = (props) => {
 
     const {currentPage, moviePerPage, totalMovies, handlePageSelect, handleLastPage, handleNextPage} = props;
     
-    const pageNumbers = [];
+    const pageNumbers:number[] = [];
     const firstPage = currentPage <= 1;
     const lastPage = currentPage >= Math.ceil(totalMovies / moviePerPage);
 
     for(let i = 1; i <= Math.ceil(totalMovies / moviePerPage); i++) { 
-      pageNumbers.push(i);
+      pageNumbers.splice(pageNumbers.length,0, i);
     }
 
+    const filteredArray = pageNumbers.filter((number) => {  
+      return number >= currentPage - 2 && number <= currentPage + 2;
+    });
+    
     return (
       <div
         className="flex items-center justify-center flex-col md:flex-row gap-2"
@@ -36,7 +39,7 @@ const PaginationBar:FC<PaginationBarTypeProp> = (props) => {
                                     onClick={handleLastPage}/>}
         <div className="flex gap-2">
           {
-            pageNumbers.map((number) => {
+            filteredArray.map((number) => {
               return (
                 <PageButton key={number} currentPage={currentPage} title={number.toString()} type={"button"} onClick={() => handlePageSelect(number)}/>
               )

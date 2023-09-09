@@ -7,7 +7,7 @@ interface PageButtonTypeProp {
     title: string,  
     type: ButtonField,
     isDisable?: boolean,
-    onClick: () => void
+    onClick?: () => void
 }
 
 const PageButton:FC<PageButtonTypeProp> = (props) => {
@@ -18,9 +18,9 @@ const PageButton:FC<PageButtonTypeProp> = (props) => {
     <button
       type={type}
       onClick={onClick}
-      className={`relative inline-flex items-center rounded-md bg-white px-3 py-2 
-                  text-sm font-semibold text-gray-900 hover:bg-slate-200
-                  ${currentPage && "bg-slate-200"}
+      className={`relative inline-flex items-center rounded-md px-3 py-2 
+                  text-sm text-gray-900 hover:bg-slate-200
+                  ${currentPage === Number(title) ? "bg-slate-200" : "bg-white"}
                   disabled:bg-gray-300
                 `}
       disabled={isDisable}
