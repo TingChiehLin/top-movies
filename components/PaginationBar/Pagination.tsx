@@ -19,14 +19,15 @@ const PaginationBar:FC<PaginationBarTypeProp> = (props) => {
     
     const pageNumbers:number[] = [];
     const firstPage = currentPage <= 1;
-    const lastPage = currentPage >= Math.ceil(totalMovies / moviePerPage);
+    const lastPage = currentPage >= Math.ceil(totalMovies / moviePerPage) - 4;
 
     for(let i = 1; i <= Math.ceil(totalMovies / moviePerPage); i++) { 
       pageNumbers.splice(pageNumbers.length,0, i);
     }
 
     const filteredArray = pageNumbers.filter((number) => {  
-      return number >= currentPage - 2 && number <= currentPage + 2;
+      if(lastPage) return number >= Math.ceil(totalMovies / moviePerPage) - 4;
+      return number >= currentPage && number <= currentPage + 4;
     });
     
     return (
@@ -34,6 +35,7 @@ const PaginationBar:FC<PaginationBarTypeProp> = (props) => {
         className="flex items-center justify-center flex-col md:flex-row gap-2"
         aria-label="Pagination"
       >
+        <span className="select-none">Last Page</span>
         {firstPage ? <HiChevronLeft className="text-gray-300 cursor-pointer" size={"2rem"} />
                    : <HiChevronLeft className="text-primaryColor cursor-pointer" size={"2rem"} 
                                     onClick={handleLastPage}/>}
@@ -46,9 +48,10 @@ const PaginationBar:FC<PaginationBarTypeProp> = (props) => {
             })
           }
         </div>
-        {lastPage ? <HiChevronRight className="text-gray-300 cursor-pointer" size={"2rem"} />
+        {lastPage ? <HiChevronRight className="text-gray-300 cursor-pointer" size={"2rem"}/>
                   : <HiChevronRight className="text-primaryColor cursor-pointer" size={"2rem"} 
                                     onClick={handleNextPage}/>} 
+        <span className="select-none">Next Page</span>
       </div>
     )
   }
