@@ -47,6 +47,7 @@ const Home:NextPage<HomePropType> = () => {
       return movie.genre.includes(filterGenre);
     });
     setFilteredMovieData(newFilteredMovieData);
+    setCurrentPage(1);
     setSearchText("");
   };
 
