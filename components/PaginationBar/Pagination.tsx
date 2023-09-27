@@ -17,7 +17,7 @@ const PaginationBar:FC<PaginationBarTypeProp> = (props) => {
 
     const {currentPage, moviePerPage, totalMovies, handlePageSelect, handleLastPage, handleNextPage} = props;
     
-    const pageNumbers:number[] = [];
+    const pageNumbers:number[] = Array();
     const firstPage = currentPage <= 1;
     const lastPage = currentPage >= Math.ceil(totalMovies / moviePerPage) - 4;
 

@@ -97,7 +97,7 @@ const Home:NextPage<HomePropType> = () => {
         <PaginationBar 
                        currentPage={currentPage}
                        moviePerPage={moviePerPage} 
-                       totalMovies={movieData.length} 
+                       totalMovies={filteredMovieData.length} 
                        handlePageSelect={handlePageSelect} 
                        handleLastPage={handleLastPage}
                        handleNextPage={handleNextPage}
