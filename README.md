@@ -33,15 +33,17 @@ First of all, set up API Key
 
 ## Getting Started
 
-Firstly, install node_modules dependencies`npm install or yarn install`
+1. Install node_modules dependencies`npm install or yarn install`
 
-Secondly, run the development server:
+2. Run the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
 ```
+
+[Local Dev Link](http://localhost:3002)
 
 ## Tech I used
 
