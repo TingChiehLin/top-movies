@@ -5,23 +5,85 @@ import { NextPage } from "next/types";
 
 import MovieSection from "@/components/MovieSection/MovieSection";
 import SearchBar from "@/components/SearchBar/SearchBar";
-import Button from "@/components/Button/Button";
 
 import movieData from "../lib/top_100_movies.json";
 import FilterBar from "@/components/FilterBar";
 import PaginationBar from "@/components/PaginationBar";
+import { MovieField } from "@/lib/movieField";
 
 interface HomePropType {
   searchParams: HomePropType
 }
 
-const Home:NextPage<HomePropType> = () => {
-  const [searchText, setSearchText] = React.useState("");
-  const [filteredMovieData, setFilteredMovieData] = React.useState(movieData);
-  const [currentPage, setCurrentPage] = React.useState(1);
-  const [moviePerPage] = React.useState(8);
+interface MovieAction {
+  type: string,
+  payload?: any  
+}
 
+interface MovieState {
+  searchText: string,
+  filteredMovieData: MovieField[],
+  currentPage: number,
+}
+
+const initialState = {
+  searchText: "",
+  filteredMovieData: movieData,
+  currentPage: 1,
+}
+
+function movieReducer(state: MovieState, action: MovieAction) {
+    const { type, payload } = action;
+
+    switch(type) {
+      case "SEARCH_MOVIE":
+        return {
+          ...state,
+          searchText: payload.searchText,
+          filteredMovieData: payload.filteredMovieData,
+        }
+      case "UPDATE_FILTER":
+        return {
+          ...state,
+          filteredMovieData: payload.filteredMovieData,
+          currentPage: payload.currentPage,
+          searchText: payload.searchText,
+        }
+      case "PAGE_SELECT":
+        return {
+          ...state,
+          currentPage: payload,
+        }
+      case "LAST_PAGE":
+        return {
+          ...state,
+          currentPage: state.currentPage - 1,
+        }
+      case "NEXT_PAGE":
+        return {
+          ...state,
+          currentPage: state.currentPage + 1.
+        }
+      default:
+        return state;
+    }
+}
+
+const Home:NextPage<HomePropType> = () => {
+
+  //useState
+  // const [searchText, setSearchText] = React.useState("");
+  // const [filteredMovieData, setFilteredMovieData] = React.useState(movieData);
+  // const [currentPage, setCurrentPage] = React.useState(1);
+  // const [moviePerPage] = React.useState(8);
+
+  //useReducer
+  const [state, dispatch] = React.useReducer(movieReducer, initialState)
+
+  const {searchText, filteredMovieData, currentPage} = state;
+  console.log(currentPage)
   //Limit to 8 movies per page
+  const moviePerPage = 8;
   const start = (currentPage - 1) * moviePerPage;
   const end = currentPage * moviePerPage;
   const formatData = filteredMovieData.slice(start, end);
@@ -47,20 +109,24 @@ const Home:NextPage<HomePropType> = () => {
       return movie.genre.includes(filterGenre);
     });
     setFilteredMovieData(newFilteredMovieData);
-    setCurrentPage(1);
+    // setCurrentPage(1);
+    dispatch({type:"PAGE_SELECT", payload: 1})
     setSearchText("");
   };
 
   const handlePageSelect = (index:number) => {
-    setCurrentPage(index);
+    dispatch({type:"PAGE_SELECT", payload: index})
+    // setCurrentPage(index);
   }
 
   const handleLastPage = () => {
-    setCurrentPage(preState => preState - 1);
+    dispatch({type:"LAST_PAGE"})
+    //setCurrentPage(preState => preState - 1);
   }
 
   const handleNextPage = () => {
-    setCurrentPage(preState => preState + 1);
+    //setCurrentPage(preState => preState + 1);
+    dispatch({type:"NEXT_PAGE"})
   }
 
   return (
