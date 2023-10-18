@@ -17,7 +17,12 @@ interface HomePropType {
 
 interface MovieAction {
   type: string,
-  payload?: any  
+  payload?: {
+    searchText?: string,
+    data?: MovieField[],
+    page?: number,
+    data?: MovieField[]
+  },
 }
 
 interface MovieState {
@@ -34,25 +39,22 @@ const initialState = {
 
 function movieReducer(state: MovieState, action: MovieAction) {
     const { type, payload } = action;
-
     switch(type) {
       case "SEARCH_MOVIE":
         return {
           ...state,
-          searchText: payload.searchText,
-          filteredMovieData: payload.filteredMovieData,
+          searchText: payload?.searchText,
         }
       case "UPDATE_FILTER":
-        return {
-          ...state,
-          filteredMovieData: payload.filteredMovieData,
-          currentPage: payload.currentPage,
-          searchText: payload.searchText,
-        }
+        return 
+          {
+            ...state,
+            filteredMovieData: payload?.data,
+          }
       case "PAGE_SELECT":
         return {
           ...state,
-          currentPage: payload,
+          currentPage: payload?.page,
         }
       case "LAST_PAGE":
         return {
@@ -81,7 +83,6 @@ const Home:NextPage<HomePropType> = () => {
   const [state, dispatch] = React.useReducer(movieReducer, initialState)
 
   const {searchText, filteredMovieData, currentPage} = state;
-  console.log(currentPage)
   //Limit to 8 movies per page
   const moviePerPage = 8;
   const start = (currentPage - 1) * moviePerPage;
@@ -91,31 +92,35 @@ const Home:NextPage<HomePropType> = () => {
   const handleSearch = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
     const newSearchText = e.currentTarget.value;
-    setSearchText(newSearchText);
+    // setSearchText(newSearchText);
+    dispatch({type:"SEARCH_MOVIE", searchText: newSearchText})
     const newFilteredMovieData = movieData.filter((movie) => {
     const newMovTitle = movie.title.toLowerCase().trim();
       return newMovTitle.includes(newSearchText.toLowerCase())
     }
     );
-    setFilteredMovieData(newFilteredMovieData);
+    // setFilteredMovieData(newFilteredMovieData);
+    // dispatch({type:"UPDATE_FILTER"})
   };
 
   const handleUpdateFilter = (filterGenre: string) => {
     if (filterGenre === "Any") {
-      setFilteredMovieData(movieData);
+      // setFilteredMovieData(movieData);
+      dispatch({type:"UPDATE_FILTER", data: movieData})
       return;
     }
     const newFilteredMovieData = movieData.filter((movie) => {
       return movie.genre.includes(filterGenre);
     });
-    setFilteredMovieData(newFilteredMovieData);
+    // setFilteredMovieData(newFilteredMovieData);
+    dispatch({type:"UPDATE_FILTER", data: newFilteredMovieData})
     // setCurrentPage(1);
-    dispatch({type:"PAGE_SELECT", payload: 1})
-    setSearchText("");
+    dispatch({type:"PAGE_SELECT", page: 1})
+    dispatch({type:"SEARCH_MOVIE", searchText: ""})
   };
 
   const handlePageSelect = (index:number) => {
-    dispatch({type:"PAGE_SELECT", payload: index})
+    dispatch({type:"PAGE_SELECT", page: index})
     // setCurrentPage(index);
   }
 
