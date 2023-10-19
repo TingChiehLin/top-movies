@@ -17,12 +17,7 @@ interface HomePropType {
 
 interface MovieAction {
   type: string,
-  payload?: {
-    searchText?: string,
-    data?: MovieField[],
-    page?: number,
-    data?: MovieField[]
-  },
+  payload?: any
 }
 
 interface MovieState {
@@ -31,7 +26,7 @@ interface MovieState {
   currentPage: number,
 }
 
-const initialState = {
+const initialState: MovieState = {
   searchText: "",
   filteredMovieData: movieData,
   currentPage: 1,
@@ -39,22 +34,58 @@ const initialState = {
 
 function movieReducer(state: MovieState, action: MovieAction) {
     const { type, payload } = action;
+
     switch(type) {
-      case "SEARCH_MOVIE":
+      case "SEARCH_MOVIE": {
+        const newSearchText = payload;
+        const newFilteredMovieData = movieData.filter((movie) => {
+          const newMovTitle = movie.title.toLowerCase().trim();
+          return newMovTitle.includes(newSearchText.toLowerCase())
+        })
         return {
           ...state,
-          searchText: payload?.searchText,
+          filteredMovieData: newFilteredMovieData,
+          searchText: newSearchText,
         }
-      case "UPDATE_FILTER":
-        return 
-          {
+      }
+      case "UPDATE_FILTER": {
+        // if (filterGenre === "Any") {
+        //   // setFilteredMovieData(movieData);
+        //   dispatch({type:"UPDATE_FILTER", payload: movieData})
+        //   return;
+        // }
+        // const newFilteredMovieData = movieData.filter((movie) => {
+        //   return movie.genre.includes(filterGenre);
+        // });
+        // // setFilteredMovieData(newFilteredMovieData);
+        // dispatch({type:"UPDATE_FILTER", payload: newFilteredMovieData})
+        // // setCurrentPage(1);
+        // dispatch({type:"PAGE_SELECT", payload: 1})
+        // dispatch({type:"SEARCH_MOVIE", payload: ""})
+
+        if (payload === "Any") {
+          return {
             ...state,
-            filteredMovieData: payload?.data,
+            filteredMovieData: movieData,
+            currentPage: 1,
+            searchText: "",
           }
+        }
+
+        const newFilteredMovieData = movieData.filter((movie) => {
+          return movie.genre.includes(payload);
+        })        
+
+        return {
+          ...state,
+          filteredMovieData: newFilteredMovieData,
+          searchText: ""
+        }
+      }
       case "PAGE_SELECT":
         return {
           ...state,
-          currentPage: payload?.page,
+          currentPage: payload,
         }
       case "LAST_PAGE":
         return {
@@ -93,34 +124,35 @@ const Home:NextPage<HomePropType> = () => {
     e.preventDefault();
     const newSearchText = e.currentTarget.value;
     // setSearchText(newSearchText);
-    dispatch({type:"SEARCH_MOVIE", searchText: newSearchText})
-    const newFilteredMovieData = movieData.filter((movie) => {
-    const newMovTitle = movie.title.toLowerCase().trim();
-      return newMovTitle.includes(newSearchText.toLowerCase())
-    }
-    );
+    dispatch({type:"SEARCH_MOVIE", payload: newSearchText})
+    // const newFilteredMovieData = movieData.filter((movie) => {
+    // const newMovTitle = movie.title.toLowerCase().trim();
+    //   return newMovTitle.includes(newSearchText.toLowerCase())
+    // }
+    // );
     // setFilteredMovieData(newFilteredMovieData);
-    // dispatch({type:"UPDATE_FILTER"})
+    // dispatch({type:"UPDATE_FILTER", payload: newFilteredMovieData})
   };
 
   const handleUpdateFilter = (filterGenre: string) => {
-    if (filterGenre === "Any") {
-      // setFilteredMovieData(movieData);
-      dispatch({type:"UPDATE_FILTER", data: movieData})
-      return;
-    }
-    const newFilteredMovieData = movieData.filter((movie) => {
-      return movie.genre.includes(filterGenre);
-    });
-    // setFilteredMovieData(newFilteredMovieData);
-    dispatch({type:"UPDATE_FILTER", data: newFilteredMovieData})
-    // setCurrentPage(1);
-    dispatch({type:"PAGE_SELECT", page: 1})
-    dispatch({type:"SEARCH_MOVIE", searchText: ""})
+    // if (filterGenre === "Any") {
+    //   // setFilteredMovieData(movieData);
+    //   dispatch({type:"UPDATE_FILTER", payload: movieData})
+    //   return;
+    // }
+    // const newFilteredMovieData = movieData.filter((movie) => {
+    //   return movie.genre.includes(filterGenre);
+    // });
+    // // setFilteredMovieData(newFilteredMovieData);
+    // dispatch({type:"UPDATE_FILTER", payload: newFilteredMovieData})
+    // // setCurrentPage(1);
+    // dispatch({type:"PAGE_SELECT", payload: 1})
+    // dispatch({type:"SEARCH_MOVIE", payload: ""})
+    dispatch({type:"UPDATE_FILTER", payload: filterGenre})
   };
 
   const handlePageSelect = (index:number) => {
-    dispatch({type:"PAGE_SELECT", page: index})
+    dispatch({type:"PAGE_SELECT", payload: index})
     // setCurrentPage(index);
   }
 
