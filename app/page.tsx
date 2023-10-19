@@ -66,13 +66,15 @@ function movieReducer(state: MovieState, action: MovieAction) {
         return {
           ...state,
           filteredMovieData: newFilteredMovieData,
-          searchText: ""
+          searchText: "",
+          currentPage: 1,
         }
       }
       case "PAGE_SELECT":
+        const selectedPage = payload;
         return {
           ...state,
-          currentPage: payload,
+          currentPage: selectedPage,
         }
       case "LAST_PAGE":
         return {
