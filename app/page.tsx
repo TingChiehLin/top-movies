@@ -49,21 +49,8 @@ function movieReducer(state: MovieState, action: MovieAction) {
         }
       }
       case "UPDATE_FILTER": {
-        // if (filterGenre === "Any") {
-        //   // setFilteredMovieData(movieData);
-        //   dispatch({type:"UPDATE_FILTER", payload: movieData})
-        //   return;
-        // }
-        // const newFilteredMovieData = movieData.filter((movie) => {
-        //   return movie.genre.includes(filterGenre);
-        // });
-        // // setFilteredMovieData(newFilteredMovieData);
-        // dispatch({type:"UPDATE_FILTER", payload: newFilteredMovieData})
-        // // setCurrentPage(1);
-        // dispatch({type:"PAGE_SELECT", payload: 1})
-        // dispatch({type:"SEARCH_MOVIE", payload: ""})
-
-        if (payload === "Any") {
+        const newGenre = payload;
+        if (newGenre === "Any") {
           return {
             ...state,
             filteredMovieData: movieData,
@@ -73,7 +60,7 @@ function movieReducer(state: MovieState, action: MovieAction) {
         }
 
         const newFilteredMovieData = movieData.filter((movie) => {
-          return movie.genre.includes(payload);
+          return movie.genre.includes(newGenre);
         })        
 
         return {
@@ -104,17 +91,10 @@ function movieReducer(state: MovieState, action: MovieAction) {
 
 const Home:NextPage<HomePropType> = () => {
 
-  //useState
-  // const [searchText, setSearchText] = React.useState("");
-  // const [filteredMovieData, setFilteredMovieData] = React.useState(movieData);
-  // const [currentPage, setCurrentPage] = React.useState(1);
-  // const [moviePerPage] = React.useState(8);
-
-  //useReducer
   const [state, dispatch] = React.useReducer(movieReducer, initialState)
 
   const {searchText, filteredMovieData, currentPage} = state;
-  //Limit to 8 movies per page
+
   const moviePerPage = 8;
   const start = (currentPage - 1) * moviePerPage;
   const end = currentPage * moviePerPage;
@@ -123,46 +103,22 @@ const Home:NextPage<HomePropType> = () => {
   const handleSearch = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
     const newSearchText = e.currentTarget.value;
-    // setSearchText(newSearchText);
     dispatch({type:"SEARCH_MOVIE", payload: newSearchText})
-    // const newFilteredMovieData = movieData.filter((movie) => {
-    // const newMovTitle = movie.title.toLowerCase().trim();
-    //   return newMovTitle.includes(newSearchText.toLowerCase())
-    // }
-    // );
-    // setFilteredMovieData(newFilteredMovieData);
-    // dispatch({type:"UPDATE_FILTER", payload: newFilteredMovieData})
   };
 
   const handleUpdateFilter = (filterGenre: string) => {
-    // if (filterGenre === "Any") {
-    //   // setFilteredMovieData(movieData);
-    //   dispatch({type:"UPDATE_FILTER", payload: movieData})
-    //   return;
-    // }
-    // const newFilteredMovieData = movieData.filter((movie) => {
-    //   return movie.genre.includes(filterGenre);
-    // });
-    // // setFilteredMovieData(newFilteredMovieData);
-    // dispatch({type:"UPDATE_FILTER", payload: newFilteredMovieData})
-    // // setCurrentPage(1);
-    // dispatch({type:"PAGE_SELECT", payload: 1})
-    // dispatch({type:"SEARCH_MOVIE", payload: ""})
     dispatch({type:"UPDATE_FILTER", payload: filterGenre})
   };
 
   const handlePageSelect = (index:number) => {
     dispatch({type:"PAGE_SELECT", payload: index})
-    // setCurrentPage(index);
   }
 
   const handleLastPage = () => {
     dispatch({type:"LAST_PAGE"})
-    //setCurrentPage(preState => preState - 1);
   }
 
   const handleNextPage = () => {
-    //setCurrentPage(preState => preState + 1);
     dispatch({type:"NEXT_PAGE"})
   }
 

@@ -52,6 +52,7 @@ yarn dev
 - TailwindCSS
 - React Icon
 - React Context API
+- React Reducer
 - Test Library(Jest and Cypress)
 
 ## API
