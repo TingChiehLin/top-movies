@@ -10,6 +10,7 @@ import movieData from "../lib/top_100_movies.json";
 import FilterBar from "@/components/FilterBar";
 import PaginationBar from "@/components/PaginationBar";
 import { MovieField } from "@/lib/movieField";
+import Button from "@/components/Button";
 
 interface HomePropType {
   searchParams: HomePropType
@@ -124,9 +125,14 @@ const Home:NextPage<HomePropType> = () => {
     dispatch({type:"NEXT_PAGE"})
   }
 
+  // const handleClick = () => { 
+  //   console.log("test")
+  // }
+
   return (
     <div className="w-full max-w-7xl h-full mx-auto py-32 flex flex-col justify-between">
         <div className="">
+          {/* <Button element="button" title="test" type="button" onClick={handleClick}/> */}
           <h1 className="text-4xl mb-12 font-bold">Top 100 Movies</h1>
           <form className="flex justify-between items-center">
             <div>

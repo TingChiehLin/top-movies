@@ -1,33 +1,32 @@
-import { FC } from "react";
+import { FC, ComponentPropsWithoutRef } from "react";
 
-type ButtonField = "button" | "submit" | "reset" | undefined;
+type ButtonProps = {
+  element: "button";
+  title: string;  
+  children?: React.ReactNode;
+} & ComponentPropsWithoutRef<"button">;
 
-interface PageButtonTypeProp {
-    title?: string,  
-    type: ButtonField,
-    isDisable?: boolean,
-    children?: React.ReactNode,
-    onClick: () => void
-}
+type AnchorProps = {
+  element: "a";
+} & ComponentPropsWithoutRef<"a">;
 
-const Button:FC<PageButtonTypeProp> = (props) => {
-  
-  const {title, type, isDisable, children, onClick} = props;
+const Button:FC<ButtonProps | AnchorProps> = (props) => {
+  const {element, title, children} = props;
+
+  if(element === "a") {
+    return <a {...props}></a>
+  } 
 
   return (
     <button
-    type={type}
-    onClick={onClick}
     className={`relative inline-flex items-center rounded-md bg-white px-3 py-2 
                 text-sm font-semibold text-gray-900 ring-gray-300 hover:bg-slate-100
                disabled:bg-gray-300
               `}
-    disabled={isDisable}
+    {...props}
     >
-      <div>
-        <span className="">{title}</span>
+        <span className="text-xs md:text-sm font-bold">{title}</span>
         {children}
-      </div>
   </button>
   )
 }
